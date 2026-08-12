@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Gemma-2-27B", "family": "Google", "released": "2024-06-27",
+    "params_b": 27.0, "active_params_b": 27.0, "arch": "dense", "quant": "Q4_K_M",
+    "model_gb": 16.74, "kv_gb": 2.43, "tool": "unknown",
+    "scores": {"MMLU-Pro": null, "GPQA": null, "MATH-500": null, "IFEval": 91.1, "ARC-AGI": null, "BFCL": null},
+    "source": "https://arxiv.org/abs/2408.00118",
+    "notes": "Official card (HF gated, card text read via page) + Gemma 2 report Table 13: MMLU 75.2, MATH 42.3 - card reports MMLU/MATH not MMLU-Pro/MATH-500, so those are null. No GPQA in report/card (HF community eval 40.9 disregarded). IFEval 91.1 from Gemma 3 report Table 18 (Google's own Gemma 2 27B comparison eval). 27B per official docs (card lists PT 27B)."
+  },
+  {
+    "name": "Gemma-3-4B", "family": "Google", "released": "2025-03-12",
+    "params_b": 4.3, "active_params_b": 4.3, "arch": "dense", "quant": "Q4_K_M",
+    "model_gb": 2.67, "kv_gb": 0.39, "tool": "unknown",
+    "scores": {"MMLU-Pro": 43.6, "GPQA": 30.8, "MATH-500": null, "IFEval": 90.2, "ARC-AGI": null, "BFCL": null},
+    "source": "https://arxiv.org/html/2503.19786v1",
+    "notes": "Official Gemma 3 report (IT models): Table 6 MMLU-Pro 43.6, GPQA Diamond 30.8; Table 18 IFEval 90.2. Report MATH 75.6 is MATH not MATH-500 -> null. Params 4.3B = 3,209M non-emb + 675M emb + 417M SigLIP vision encoder (report Table 1). Released 2025-03-12 (official blog + HF)."
+  },
+  {
+    "name": "Gemma-3-27B", "family": "Google", "released": "2025-03-12",
+    "params_b": 27.4, "active_params_b": 27.4, "arch": "dense", "quant": "Q4_K_M",
+    "model_gb": 16.99, "kv_gb": 2.47, "tool": "unknown",
+    "scores": {"MMLU-Pro": 67.5, "GPQA": 42.4, "MATH-500": null, "IFEval": 90.4, "ARC-AGI": null, "BFCL": null},
+    "source": "https://arxiv.org/html/2503.19786v1",
+    "notes": "Official Gemma 3 report (IT): Table 6 MMLU-Pro 67.5, GPQA Diamond 42.4; Table 18 IFEval 90.4. MATH 89.0 in report is MATH not MATH-500 -> null. Params 27.4B = 25,600M non-emb + 1,416M emb + 417M vision (report Table 1); card lists only PT tables (MMLU-Pro COT 52.2 PT). Released 2025-03-12."
+  },
+  {
+    "name": "Gemma-3n-E4B", "family": "Google", "released": "2025-06-26",
+    "params_b": 8.0, "active_params_b": 4.0, "arch": "dense", "quant": "Q4_K_M",
+    "model_gb": 4.96, "kv_gb": 0.72, "tool": "unknown",
+    "scores": {"MMLU-Pro": 50.6, "GPQA": 23.7, "MATH-500": null, "IFEval": null, "ARC-AGI": null, "BFCL": null},
+    "source": "https://huggingface.co/google/gemma-3n-E4B-it",
+    "notes": "Official card: MMLU (Pro) 50.6 and GPQA Diamond 23.7, both 0-shot. 8B raw total / 4B effective (official dev guide + card). NOT MoE - dense arch with MatFormer selective parameter activation + Per-Layer Embeddings; card's 'E4B contains E2B sub-model'. Release date 2025-06-26 (HF blog datePublished + dev guide), previewed 2025-05-20 at I/O. No IFEval published."
+  },
+  {
+    "name": "Gemma-4-E2B", "family": "Google", "released": "2026-04-02",
+    "params_b": 5.1, "active_params_b": 2.3, "arch": "dense", "quant": "Q4_K_M",
+    "model_gb": 3.16, "kv_gb": 0.46, "tool": "unknown",
+    "scores": {"MMLU-Pro": 60.0, "GPQA": 43.4, "MATH-500": null, "IFEval": null, "ARC-AGI": null, "BFCL": null},
+    "source": "https://huggingface.co/google/gemma-4-E2B-it/raw/main/README.md",
+    "notes": "Official Gemma 4 card: MMLU Pro 60.0, GPQA Diamond 43.4 (with thinking, per shared family table). 2.3B effective / 5.1B with embeddings (Per-Layer Embeddings, dense). No MATH-500/IFEval published for Gemma 4. Smallest Gemma 4; not previously in DB (only E4B was). Launched 2026-04-02 with the family."
+  },
+  {
+    "name": "Gemma-4-12B", "family": "Google", "released": "2026-06-03",
+    "params_b": 11.95, "active_params_b": 11.95, "arch": "dense", "quant": "Q4_K_M",
+    "model_gb": 7.41, "kv_gb": 1.08, "tool": "unknown",
+    "scores": {"MMLU-Pro": 77.2, "GPQA": 78.8, "MATH-500": null, "IFEval": null, "ARC-AGI": null, "BFCL": null},
+    "source": "https://huggingface.co/google/gemma-4-12B-it/raw/main/README.md",
+    "notes": "Official card: MMLU Pro 77.2, GPQA Diamond 78.8. 11.95B dense, encoder-free 'Unified' multimodal (audio+vision), 256K ctx. Released 2026-06-03 per blog.google 'Introducing Gemma 4 12B' (added 2 months after family launch 2026-04-02). No MATH-500/IFEval published. Not in DB."
+  },
+  {
+    "name": "Gemma-4-26B-A4B", "family": "Google", "released": "2026-04-02",
+    "params_b": 25.2, "active_params_b": 3.8, "arch": "moe", "quant": "Q4_K_M",
+    "model_gb": 15.62, "kv_gb": 2.27, "tool": "unknown",
+    "scores": {"MMLU-Pro": 82.6, "GPQA": 82.3, "MATH-500": null, "IFEval": null, "ARC-AGI": null, "BFCL": null},
+    "source": "https://huggingface.co/google/gemma-4-26B-A4B-it/raw/main/README.md",
+    "notes": "Official card: MMLU Pro 82.6, GPQA Diamond 82.3. 25.2B total / 3.8B active (card 'Total 25.2B, Active 3.8B, 8 active/128 total + 1 shared experts') - NOT 4B active as commonly quoted. 256K ctx, image+text. No MATH-500/IFEval published. Launched 2026-04-02. Not in DB."
+  }
+]

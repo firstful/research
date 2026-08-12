@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Mistral-7B-Instruct-v0.1", "family": "Mistral", "released": "2023-09-27",
+    "params_b": 7.3, "active_params_b": 7.3, "arch": "dense", "quant": "Q4_K_M",
+    "model_gb": 4.53, "kv_gb": 0.66, "tool": "unknown",
+    "scores": {"MMLU-Pro": null, "GPQA": 17.7, "MATH-500": null, "IFEval": null, "ARC-AGI": null, "BFCL": null},
+    "source": "https://artificialanalysis.ai/models/mistral-7b-instruct",
+    "notes": "Params 7.3B from mistral.ai news (announcing-mistral-7b). GPQA 17.7 = Artificial Analysis eval of deprecated model; official model card has no benchmark table. MMLU-Pro/MATH-500/IFEval not published by official sources."
+  },
+  {
+    "name": "Mixtral-8x22B-Instruct-v0.1", "family": "Mistral", "released": "2024-04-17",
+    "params_b": 141.0, "active_params_b": 39.0, "arch": "moe", "quant": "Q4_K_M",
+    "model_gb": 87.42, "kv_gb": 12.69, "tool": "unknown",
+    "scores": {"MMLU-Pro": null, "GPQA": null, "MATH-500": null, "IFEval": null, "ARC-AGI": null, "BFCL": null},
+    "source": "https://mistral.ai/news/mixtral-8x22b/",
+    "notes": "141B total / 39B active per official blog (HF repo created 2024-04-16). Official card/blog show MMLU only as figures; no numeric MMLU-Pro/GPQA/MATH-500/IFEval published. Not present in DB (only Mixtral-8x7B is)."
+  },
+  {
+    "name": "Mistral-Small-24B-Instruct-2501", "family": "Mistral", "released": "2025-01-28",
+    "params_b": 24.0, "active_params_b": 24.0, "arch": "dense", "quant": "Q4_K_M",
+    "model_gb": 14.88, "kv_gb": 2.16, "tool": "unknown",
+    "scores": {"MMLU-Pro": 66.3, "GPQA": 45.3, "MATH-500": null, "IFEval": 82.9, "ARC-AGI": null, "BFCL": null},
+    "source": "https://huggingface.co/mistralai/Mistral-Small-24B-Instruct-2501/raw/main/README.md",
+    "notes": "Official card: mmlu_pro_5shot_cot 0.663, gpqa_main_cot_5shot 0.453, ifeval 0.829. Card reports math_instruct 0.706, not MATH-500; BFCL/ARC-AGI not published."
+  },
+  {
+    "name": "Mistral-Small-3.1-24B", "family": "Mistral", "released": "2025-03-11",
+    "params_b": 24.0, "active_params_b": 24.0, "arch": "dense", "quant": "Q4_K_M",
+    "model_gb": 14.88, "kv_gb": 2.16, "tool": "unknown",
+    "scores": {"MMLU-Pro": 66.76, "GPQA": 44.42, "MATH-500": null, "IFEval": null, "ARC-AGI": null, "BFCL": null},
+    "source": "https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503/raw/main/README.md",
+    "notes": "Official card: MMLU Pro (5-shot CoT) 66.76%, GPQA Main 44.42%, MATH 69.30% (MATH, not MATH-500). No IFEval/BFCL/ARC-AGI in card; announced Mar 17, 2025, HF repo 2025-03-11."
+  },
+  {
+    "name": "Mistral-Small-3.2-24B", "family": "Mistral", "released": "2025-06-19",
+    "params_b": 24.0, "active_params_b": 24.0, "arch": "dense", "quant": "Q4_K_M",
+    "model_gb": 14.88, "kv_gb": 2.16, "tool": "unknown",
+    "scores": {"MMLU-Pro": 69.06, "GPQA": 44.22, "MATH-500": null, "IFEval": null, "ARC-AGI": null, "BFCL": null},
+    "source": "https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506/raw/main/README.md",
+    "notes": "Official card: MMLU Pro 69.06%, GPQA Main 44.22%, MATH 69.42% (MATH, not MATH-500). Internal instruct-following metric 84.78% (not IFEval)."
+  },
+  {
+    "name": "Magistral-Small-2506", "family": "Mistral", "released": "2025-06-04",
+    "params_b": 24.0, "active_params_b": 24.0, "arch": "dense", "quant": "Q4_K_M",
+    "model_gb": 14.88, "kv_gb": 2.16, "tool": "unknown",
+    "scores": {"MMLU-Pro": null, "GPQA": 68.18, "MATH-500": null, "IFEval": null, "ARC-AGI": null, "BFCL": null},
+    "source": "https://huggingface.co/mistralai/Magistral-Small-2506/raw/main/README.md",
+    "notes": "Reasoning model built on Small-3.1. Official card: GPQA Diamond 68.18%, AIME24 70.68%. No MMLU-Pro/MATH-500/IFEval published. NOTE: 'Magistral-7B' from task brief does not exist; Magistral launched June 2025 as 24B open + Medium enterprise (mistral.ai/news/magistral)."
+  },
+  {
+    "name": "Mistral-Small-4-119B", "family": "Mistral", "released": "2026-03-16",
+    "params_b": 119.0, "active_params_b": 6.5, "arch": "moe", "quant": "Q4_K_M",
+    "model_gb": 73.78, "kv_gb": 10.71, "tool": "unknown",
+    "scores": {"MMLU-Pro": null, "GPQA": 76.9, "MATH-500": null, "IFEval": null, "ARC-AGI": null, "BFCL": null},
+    "source": "https://artificialanalysis.ai/models/mistral-small-4",
+    "notes": "119B MoE, 6.5B active per official card (128 experts, 4 active). Card benchmarks are images only. GPQA 76.9 = Artificial Analysis eval. Announced 2026-03-16 (blog/AA); HF repo created 2026-01-23. MMLU-Pro/MATH-500/IFEval not available from official sources."
+  },
+  {
+    "name": "Mistral-Medium-3.5-128B", "family": "Mistral", "released": "2026-04-29",
+    "params_b": 128.0, "active_params_b": 128.0, "arch": "dense", "quant": "Q4_K_M",
+    "model_gb": 79.36, "kv_gb": 11.52, "tool": "unknown",
+    "scores": {"MMLU-Pro": null, "GPQA": 74.8, "MATH-500": null, "IFEval": null, "ARC-AGI": null, "BFCL": null},
+    "source": "https://artificialanalysis.ai/models/mistral-medium-3-5",
+    "notes": "Dense 128B open-weight (Apache-2.0-ish/Modified MIT per news). Official card: SWE-Bench Verified 77.6%, tau3-Telecom 91.4% (agentic); other benches are images. GPQA 74.8 = Artificial Analysis. Released 2026-04-29 (news); HF repo 2026-03-31."
+  }
+]

@@ -1,0 +1,7 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+scripts/landscape.json
+scripts/reliq_posterior.json
+scripts/frontier.json

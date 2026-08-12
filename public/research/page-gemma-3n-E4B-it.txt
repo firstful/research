@@ -1,0 +1,639 @@
+ 
+ google/gemma-3n-E4B-it · Hugging Face 
+ Hugging Face Models Datasets Spaces Buckets new Docs Enterprise Pricing Website Tasks HuggingChat Collections Languages Organizations Community Blog Posts Daily Papers Hardware Learn Discord Forum GitHub Solutions Team & Enterprise Hugging Face PRO Enterprise Support Inference Providers Inference Endpoints Storage Buckets Log In Sign Up ","eos_token":"<eos>","pad_token":"<pad>","unk_token":"<unk>","use_default_system_prompt":false},"chat_template_jinja":"{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n {%- if messages[0]['content'] is string -%}\n {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n {%- else -%}\n {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n {%- endif -%}\n {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n {%- set first_user_prefix = \"\" -%}\n {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n {%- endif -%}\n {%- if (message['role'] == 'assistant') -%}\n {%- set role = \"model\" -%}\n {%- else -%}\n {%- set role = message['role'] -%}\n {%- endif -%}\n {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n {%- if message['content'] is string -%}\n {{ message['content'] | trim }}\n {%- elif message['content'] is iterable -%}\n {%- for item in message['content'] -%}\n {%- if item['type'] == 'audio' -%}\n {{ '<audio_soft_token>' }}\n {%- elif item['type'] == 'image' -%}\n {{ '<image_soft_token>' }}\n {%- elif item['type'] == 'text' -%}\n {{ item['text'] | trim }}\n {%- endif -%}\n {%- endfor -%}\n {%- else -%}\n {{ raise_exception(\"Invalid content type\") }}\n {%- endif -%}\n {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"},"createdAt":"2025-06-03T18:17:07.000Z","discussionsDisabled":false,"discussionsSorting":"recently-created","downloads":34578,"downloadsAllTime":1360665,"id":"google/gemma-3n-E4B-it","isLikedByUser":false,"availableInferenceProviders":[{"provider":"together","modelStatus":"live","providerStatus":"live","providerId":"google/gemma-3n-E4B-it","task":"conversational","adapterWeightsPath":"model-00001-of-00004.safetensors","features":{"structuredOutput":true,"toolCalling":false},"isCheapestPricingOutput":true,"isFastestThroughput":true,"isModelAuthor":false,"tokensPerSecond":56.50264567003861,"pricingOutput":0.12000000000000001}],"showHuggingChatEntry":true,"inference":"warm","lastModified":"2025-07-14T13:56:17.000Z","likes":919,"pipeline_tag":"image-text-to-text","library_name":"transformers","librariesOther":[],"trackDownloads":true,"model-index":null,"private":false,"repoType":"model","gated":"manual","tags":["transformers","safetensors","gemma3n","image-text-to-text","automatic-speech-recognition","automatic-speech-translation","audio-text-to-text","video-text-to-text","conversational","arxiv:1905.07830","arxiv:1905.10044","arxiv:1911.11641","arxiv:1904.09728","arxiv:1705.03551","arxiv:1911.01547","arxiv:1907.10641","arxiv:1903.00161","arxiv:2210.03057","arxiv:2502.12404","arxiv:2411.19799","arxiv:2009.03300","arxiv:2502.21228","arxiv:2311.12022","arxiv:2403.07974","arxiv:2108.07732","arxiv:2107.03374","base_model:google/gemma-3n-E4B","base_model:finetune:google/gemma-3n-E4B","license:gemma","endpoints_compatible","region:us"],"tag_objs":[{"id":"image-text-to-text","label":"Image-Text-to-Text","type":"pipeline_tag","subType":"multimodal"},{"id":"transformers","label":"Transformers","type":"library"},{"id":"safetensors","label":"Safetensors","type":"library"},{"id":"gemma3n","label":"gemma3n","type":"other","clickable":true},{"id":"automatic-speech-recognition","label":"automatic-speech-recognition","type":"other","clickable":true},{"id":"automatic-speech-translation","label":"automatic-speech-translation","type":"other","clickable":true},{"id":"audio-text-to-text","label":"audio-text-to-text","type":"other","clickable":true},{"id":"video-text-to-text","label":"video-text-to-text","type":"other","clickable":true},{"id":"conversational","label":"conversational","type":"other","clickable":true},{"id":"base_model:google/gemma-3n-E4B","label":"base_model:google/gemma-3n-E4B","type":"other","clickable":true},{"id":"base_model:finetune:google/gemma-3n-E4B","label":"base_model:finetune:google/gemma-3n-E4B","type":"other","clickable":true},{"id":"endpoints_compatible","label":"Inference Endpoints","type":"other","clickable":true},{"id":"arxiv:1905.07830","label":"arxiv:1905.07830","type":"arxiv","extra":{"paperTitle":"HellaSwag: Can a Machine Really Finish Your Sentence?"}},{"id":"arxiv:1905.10044","label":"arxiv:1905.10044","type":"arxiv","extra":{"paperTitle":"BoolQ: Exploring the Surprising Difficulty of Natural Yes/No Questions"}},{"id":"arxiv:1911.11641","label":"arxiv:1911.11641","type":"arxiv","extra":{"paperTitle":"PIQA: Reasoning about Physical Commonsense in Natural Language"}},{"id":"arxiv:1904.09728","label":"arxiv:1904.09728","type":"arxiv","extra":{"paperTitle":"SocialIQA: Commonsense Reasoning about Social Interactions"}},{"id":"arxiv:1705.03551","label":"arxiv:1705.03551","type":"arxiv","extra":{"paperTitle":"TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for\n Reading Comprehension"}},{"id":"arxiv:1911.01547","label":"arxiv:1911.01547","type":"arxiv","extra":{"paperTitle":"On the Measure of Intelligence"}},{"id":"arxiv:1907.10641","label":"arxiv:1907.10641","type":"arxiv","extra":{"paperTitle":"WinoGrande: An Adversarial Winograd Schema Challenge at Scale"}},{"id":"arxiv:1903.00161","label":"arxiv:1903.00161","type":"arxiv","extra":{"paperTitle":"DROP: A Reading Comprehension Benchmark Requiring Discrete Reasoning\n Over Paragraphs"}},{"id":"arxiv:2210.03057","label":"arxiv:2210.03057","type":"arxiv","extra":{"paperTitle":"Language Models are Multilingual Chain-of-Thought Reasoners"}},{"id":"arxiv:2502.12404","label":"arxiv:2502.12404","type":"arxiv","extra":{"paperTitle":"WMT24++: Expanding the Language Coverage of WMT24 to 55 Languages &\n Dialects"}},{"id":"arxiv:2411.19799","label":"arxiv:2411.19799","type":"arxiv","extra":{"paperTitle":"INCLUDE: Evaluating Multilingual Language Understanding with Regional\n Knowledge"}},{"id":"arxiv:2009.03300","label":"arxiv:2009.03300","type":"arxiv","extra":{"paperTitle":"Measuring Massive Multitask Language Understanding"}},{"id":"arxiv:2502.21228","label":"arxiv:2502.21228","type":"arxiv","extra":{"paperTitle":"ECLeKTic: a Novel Challenge Set for Evaluation of Cross-Lingual\n Knowledge Transfer"}},{"id":"arxiv:2311.12022","label":"arxiv:2311.12022","type":"arxiv","extra":{"paperTitle":"GPQA: A Graduate-Level Google-Proof Q&A Benchmark"}},{"id":"arxiv:2403.07974","label":"arxiv:2403.07974","type":"arxiv","extra":{"paperTitle":"LiveCodeBench: Holistic and Contamination Free Evaluation of Large\n Language Models for Code"}},{"id":"arxiv:2108.07732","label":"arxiv:2108.07732","type":"arxiv","extra":{"paperTitle":"Program Synthesis with Large Language Models"}},{"id":"arxiv:2107.03374","label":"arxiv:2107.03374","type":"arxiv","extra":{"paperTitle":"Evaluating Large Language Models Trained on Code"}},{"id":"license:gemma","label":"gemma","type":"license"},{"type":"region","label":"🇺🇸 Region: US","id":"region:us"}],"transformersInfo":{"auto_model":"AutoModelForMultimodalLM","pipeline_tag":"image-text-to-text","processor":"AutoProcessor"},"widgetData":[{"text":"Hi, what can you help me with?"},{"text":"What is 84 * 3 / 2?"},{"text":"Tell me an interesting fact about the universe!"},{"text":"Explain quantum computing in simple terms."}],"safetensors":{"parameters":{"BF16":7849978192},"total":7849978192,"sharded":true,"totalFileSize":15700353135},"hasBlockedOids":false,"region":"us","isQuantized":false},"discussionsStats":{"closed":14,"open":29,"total":43},"query":{},"inferenceContextData":{"billableEntities":[],"entityName2Providers":{},"defaultProviders":[{"isOriginalProvider":false,"name":"together","enabled":true,"position":5,"isReleased":true,"accuratePricing":true}]},"hasQuantizations":true,"copyToBucketNamespaces":[]}"> google / gemma-3n-E4B-it like 919 Follow Google 64k Image-Text-to-Text Transformers Safetensors gemma3n automatic-speech-recognition automatic-speech-translation audio-text-to-text video-text-to-text conversational arxiv: 17 papers License: gemma Model card Files Files and versions xet Community 43 Deploy Copy to bucket new Use this model Instructions to use google/gemma-3n-E4B-it with libraries, inference providers, notebooks, and local apps. Follow these links to get started. Libraries Transformers How to use google/gemma-3n-E4B-it with Transformers: # Use a pipeline as a high-level helper
+from transformers import pipeline
+pipe = pipeline("image-text-to-text", model="google/gemma-3n-E4B-it")
+messages = [
+ {
+ "role": "user",
+ "content": [
+ {"type": "image", "url": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/p-blog/candy.JPG"},
+ {"type": "text", "text": "What animal is on the candy?"}
+ ]
+ },
+]
+pipe(text=messages) # Load model directly
+from transformers import AutoProcessor, AutoModelForMultimodalLM
+processor = AutoProcessor.from_pretrained("google/gemma-3n-E4B-it")
+model = AutoModelForMultimodalLM.from_pretrained("google/gemma-3n-E4B-it", device_map="auto")
+messages = [
+ {
+ "role": "user",
+ "content": [
+ {"type": "image", "url": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/p-blog/candy.JPG"},
+ {"type": "text", "text": "What animal is on the candy?"}
+ ]
+ },
+]
+inputs = processor.apply_chat_template(
+ messages,
+ add_generation_prompt=True,
+ tokenize=True,
+ return_dict=True,
+ return_tensors="pt",
+).to(model.device)
+outputs = model.generate(**inputs, max_new_tokens=40)
+print(processor.decode(outputs[0][inputs["input_ids"].shape[-1]:])) Inference Inference Providers HuggingChat Notebooks Google Colab Kaggle Local Apps Settings vLLM How to use google/gemma-3n-E4B-it with vLLM: Install from pip and serve model # Install vLLM from pip:
+pip install vllm
+# Start the vLLM server:
+vllm serve "google/gemma-3n-E4B-it"
+# Call the server using curl (OpenAI-compatible API):
+curl -X POST "http://localhost:8000/v1/chat/completions" \
+ -H "Content-Type: application/json" \
+ --data '{
+ "model": "google/gemma-3n-E4B-it",
+ "messages": [
+ {
+ "role": "user",
+ "content": [
+ {
+ "type": "text",
+ "text": "Describe this image in one sentence."
+ },
+ {
+ "type": "image_url",
+ "image_url": {
+ "url": "https://cdn.britannica.com/61/93061-050-99147DCE/Statue-of-Liberty-Island-New-York-Bay.jpg"
+ }
+ }
+ ]
+ }
+ ]
+ }' Use Docker docker model run hf.co/google/gemma-3n-E4B-it SGLang How to use google/gemma-3n-E4B-it with SGLang: Install from pip and serve model # Install SGLang from pip:
+pip install sglang
+# Start the SGLang server:
+python3 -m sglang.launch_server \
+ --model-path "google/gemma-3n-E4B-it" \
+ --host 0.0.0.0 \
+ --port 30000
+# Call the server using curl (OpenAI-compatible API):
+curl -X POST "http://localhost:30000/v1/chat/completions" \
+ -H "Content-Type: application/json" \
+ --data '{
+ "model": "google/gemma-3n-E4B-it",
+ "messages": [
+ {
+ "role": "user",
+ "content": [
+ {
+ "type": "text",
+ "text": "Describe this image in one sentence."
+ },
+ {
+ "type": "image_url",
+ "image_url": {
+ "url": "https://cdn.britannica.com/61/93061-050-99147DCE/Statue-of-Liberty-Island-New-York-Bay.jpg"
+ }
+ }
+ ]
+ }
+ ]
+ }' Use Docker images docker run --gpus all \
+ --shm-size 32g \
+ -p 30000:30000 \
+ -v ~/.cache/huggingface:/root/.cache/huggingface \
+ --env "HF_TOKEN=<secret>" \
+ --ipc=host \
+ lmsysorg/sglang:latest \
+ python3 -m sglang.launch_server \
+ --model-path "google/gemma-3n-E4B-it" \
+ --host 0.0.0.0 \
+ --port 30000
+# Call the server using curl (OpenAI-compatible API):
+curl -X POST "http://localhost:30000/v1/chat/completions" \
+ -H "Content-Type: application/json" \
+ --data '{
+ "model": "google/gemma-3n-E4B-it",
+ "messages": [
+ {
+ "role": "user",
+ "content": [
+ {
+ "type": "text",
+ "text": "Describe this image in one sentence."
+ },
+ {
+ "type": "image_url",
+ "image_url": {
+ "url": "https://cdn.britannica.com/61/93061-050-99147DCE/Statue-of-Liberty-Island-New-York-Bay.jpg"
+ }
+ }
+ ]
+ }
+ ]
+ }' Docker Model Runner How to use google/gemma-3n-E4B-it with Docker Model Runner: docker model run hf.co/google/gemma-3n-E4B-it Browse
+ Quantizations to use this model in llama.cpp , Ollama , LM Studio , or any compatible app. To access Gemma on Hugging Face, you’re required to review and agree to Google’s usage license. To do this, please ensure you’re logged in to Hugging Face and click below. Requests are processed immediately.</p>\n","classNames":"hf-sanitized hf-sanitized-evD8-BlxhlTf8Vc81wGO5"},"customHeading":"Access Gemma on Hugging Face","gated":"manual","isLoggedIn":false,"repoId":"google/gemma-3n-E4B-it","repoType":"model","isGoogleGemma":true,"requiresPaidPlan":false}"> Access Gemma on Hugging Face This repository is publicly accessible, but you have to accept the conditions to access its files and content . To access Gemma on Hugging Face, you’re required to review and agree to Google’s usage license. To do this, please ensure you’re logged in to Hugging Face and click below. Requests are processed immediately. 
+ Log in or Sign Up to review the conditions and access this model content. Gemma 3n model card Model Information Description Inputs and outputs Usage Citation Model Data Training Dataset Data Preprocessing Implementation Information Hardware Software Evaluation Benchmark Results Ethics and Safety Evaluation Approach Evaluation Results Usage and Limitations Intended Usage Limitations Ethical Considerations and Risks Benefits 
+ This repository corresponds to the launch version of Gemma 3n E4B IT (Instruct), to be used with Hugging Face transformers ,
+supporting text, audio, and vision (image and video) inputs. 
+ Gemma 3n models have multiple architecture innovations: 
+ They are available in two sizes based on effective parameters . While the raw parameter count of this model is 8B, the architecture design allows the model to be run with a memory footprint comparable to a traditional 4B model by offloading low-utilization matrices from the accelerator. 
+ They use a MatFormer architecture that allows nesting sub-models within the E4B model. We provide one sub-model (an E2B ), or you can access a spectrum of custom-sized models using the Mix-and-Match method . 
+ Learn more about these techniques in the technical blog post 
+and the Gemma documentation . 
+ Gemma 3n model card
+ Model Page : Gemma 3n 
+ Resources and Technical Documentation : 
+ Responsible Generative AI Toolkit 
+ Gemma on Kaggle 
+ Gemma on HuggingFace 
+ Gemma on Vertex Model Garden 
+ Terms of Use : Terms Authors : Google DeepMind 
+ Model Information
+ Summary description and brief definition of inputs and outputs. 
+ Description
+ Gemma is a family of lightweight, state-of-the-art open models from Google,
+built from the same research and technology used to create the Gemini models.
+Gemma 3n models are designed for efficient execution on low-resource devices.
+They are capable of multimodal input, handling text, image, video, and audio
+input, and generating text outputs, with open weights for pre-trained and
+instruction-tuned variants. These models were trained with data in over 140
+spoken languages. 
+ Gemma 3n models use selective parameter activation technology to reduce resource
+requirements. This technique allows the models to operate at an effective size
+of 2B and 4B parameters, which is lower than the total number of parameters they
+contain. For more information on Gemma 3n's efficient parameter management
+technology, see the
+ Gemma 3n 
+page. 
+ Inputs and outputs
+ Input: 
+ Text string, such as a question, a prompt, or a document to be
+summarized 
+ Images, normalized to 256x256, 512x512, or 768x768 resolution
+and encoded to 256 tokens each 
+ Audio data encoded to 6.25 tokens per second from a single channel 
+ Total input context of 32K tokens 
+ Output: 
+ Generated text in response to the input, such as an answer to a
+question, analysis of image content, or a summary of a document 
+ Total output length up to 32K tokens, subtracting the request
+input tokens 
+ Usage
+ Below, there are some code snippets on how to get quickly started with running
+the model. First, install the Transformers library. Gemma 3n is supported
+starting from transformers 4.53.0. 
+ $ pip install -U transformers
+ Then, copy the snippet from the section that is relevant for your use case. 
+ Running with the pipeline API
+ You can initialize the model and processor for inference with pipeline as
+follows. 
+ from transformers import pipeline
+ import torch
+pipe = pipeline(
+ "image-text-to-text" ,
+ model= "google/gemma-3n-e4b-it" ,
+ device= "cuda" ,
+ torch_dtype=torch.bfloat16,
+)
+ With instruction-tuned models, you need to use chat templates to process our
+inputs first. Then, you can pass it to the pipeline. 
+ messages = [
+ {
+ "role" : "system" ,
+ "content" : [{ "type" : "text" , "text" : "You are a helpful assistant." }]
+ },
+ {
+ "role" : "user" ,
+ "content" : [
+ { "type" : "image" , "url" : "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/p-blog/candy.JPG" },
+ { "type" : "text" , "text" : "What animal is on the candy?" }
+ ]
+ }
+]
+output = pipe(text=messages, max_new_tokens= 200 )
+ print (output[ 0 ][ "generated_text" ][- 1 ][ "content" ])
+ # Okay, let's take a look! 
+ # Based on the image, the animal on the candy is a **turtle**. 
+ # You can see the shell shape and the head and legs. 
+ Running the model on a single GPU
+ from transformers import AutoProcessor, Gemma3nForConditionalGeneration
+ from PIL import Image
+ import requests
+ import torch
+model_id = "google/gemma-3n-e4b-it" 
+model = Gemma3nForConditionalGeneration.from_pretrained(model_id, device_map= "auto" , torch_dtype=torch.bfloat16,). eval ()
+processor = AutoProcessor.from_pretrained(model_id)
+messages = [
+ {
+ "role" : "system" ,
+ "content" : [{ "type" : "text" , "text" : "You are a helpful assistant." }]
+ },
+ {
+ "role" : "user" ,
+ "content" : [
+ { "type" : "image" , "image" : "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/bee.jpg" },
+ { "type" : "text" , "text" : "Describe this image in detail." }
+ ]
+ }
+]
+inputs = processor.apply_chat_template(
+ messages,
+ add_generation_prompt= True ,
+ tokenize= True ,
+ return_dict= True ,
+ return_tensors= "pt" ,
+).to(model.device)
+input_len = inputs[ "input_ids" ].shape[- 1 ]
+ with torch.inference_mode():
+ generation = model.generate(**inputs, max_new_tokens= 100 , do_sample= False )
+ generation = generation[ 0 ][input_len:]
+decoded = processor.decode(generation, skip_special_tokens= True )
+ print (decoded)
+ # **Overall Impression:** The image is a close-up shot of a vibrant garden scene, 
+ # focusing on a cluster of pink cosmos flowers and a busy bumblebee. 
+ # It has a slightly soft, natural feel, likely captured in daylight. 
+ Citation
+ @article{gemma_3n_2025,
+ title={Gemma 3n},
+ url={https://ai.google.dev/gemma/docs/gemma-3n},
+ publisher={Google DeepMind},
+ author={Gemma Team},
+ year={2025}
+}
+ Model Data
+ Data used for model training and how the data was processed. 
+ Training Dataset
+ These models were trained on a dataset that includes a wide variety of sources
+totalling approximately 11 trillion tokens. The knowledge cutoff date for the
+training data was June 2024. Here are the key components: 
+ Web Documents : A diverse collection of web text ensures the model
+is exposed to a broad range of linguistic styles, topics, and vocabulary.
+The training dataset includes content in over 140 languages. 
+ Code : Exposing the model to code helps it to learn the syntax and
+patterns of programming languages, which improves its ability to generate
+code and understand code-related questions. 
+ Mathematics : Training on mathematical text helps the model learn
+logical reasoning, symbolic representation, and to address mathematical queries. 
+ Images : A wide range of images enables the model to perform image
+analysis and visual data extraction tasks. 
+ Audio: A diverse set of sound samples enables the model to recognize
+speech, transcribe text from recordings, and identify information in audio data. 
+ The combination of these diverse data sources is crucial for training a
+powerful multimodal model that can handle a wide variety of different tasks and
+data formats. 
+ Data Preprocessing
+ Here are the key data cleaning and filtering methods applied to the training
+data: 
+ CSAM Filtering : Rigorous CSAM (Child Sexual Abuse Material)
+filtering was applied at multiple stages in the data preparation process to
+ensure the exclusion of harmful and illegal content. 
+ Sensitive Data Filtering : As part of making Gemma pre-trained models
+safe and reliable, automated techniques were used to filter out certain
+personal information and other sensitive data from training sets. 
+ Additional methods : Filtering based on content quality and safety in
+line with
+ our policies . 
+ Implementation Information
+ Details about the model internals. 
+ Hardware
+ Gemma was trained using Tensor Processing Unit
+(TPU) hardware (TPUv4p, TPUv5p
+and TPUv5e). Training generative models requires significant computational
+power. TPUs, designed specifically for matrix operations common in machine
+learning, offer several advantages in this domain: 
+ Performance : TPUs are specifically designed to handle the massive
+computations involved in training generative models. They can speed up
+training considerably compared to CPUs. 
+ Memory : TPUs often come with large amounts of high-bandwidth memory,
+allowing for the handling of large models and batch sizes during training.
+This can lead to better model quality. 
+ Scalability : TPU Pods (large clusters of TPUs) provide a scalable
+solution for handling the growing complexity of large foundation models.
+You can distribute training across multiple TPU devices for faster and more
+efficient processing. 
+ Cost-effectiveness : In many scenarios, TPUs can provide a more
+cost-effective solution for training large models compared to CPU-based
+infrastructure, especially when considering the time and resources saved
+due to faster training. 
+ These advantages are aligned with
+ Google's commitments to operate sustainably . 
+ Software
+ Training was done using JAX and
+ ML Pathways .
+JAX allows researchers to take advantage of the latest generation of hardware,
+including TPUs, for faster and more efficient training of large models. ML
+Pathways is Google's latest effort to build artificially intelligent systems
+capable of generalizing across multiple tasks. This is specially suitable for
+foundation models, including large language models like these ones. 
+ Together, JAX and ML Pathways are used as described in the
+ paper about the Gemini family of models :
+ "the 'single controller' programming model of Jax and Pathways allows a single
+Python process to orchestrate the entire training run, dramatically simplifying
+the development workflow." 
+ Evaluation
+ Model evaluation metrics and results. 
+ Benchmark Results
+ These models were evaluated at full precision (float32) against a large
+collection of different datasets and metrics to cover different aspects of
+content generation. Evaluation results marked with IT are for
+instruction-tuned models. Evaluation results marked with PT are for
+pre-trained models. 
+ Reasoning and factuality
+ Benchmark 
+ Metric 
+ n-shot 
+ E2B PT 
+ E4B PT 
+ HellaSwag 
+ Accuracy 
+ 10-shot 
+ 72.2 
+ 78.6 
+ BoolQ 
+ Accuracy 
+ 0-shot 
+ 76.4 
+ 81.6 
+ PIQA 
+ Accuracy 
+ 0-shot 
+ 78.9 
+ 81.0 
+ SocialIQA 
+ Accuracy 
+ 0-shot 
+ 48.8 
+ 50.0 
+ TriviaQA 
+ Accuracy 
+ 5-shot 
+ 60.8 
+ 70.2 
+ Natural Questions 
+ Accuracy 
+ 5-shot 
+ 15.5 
+ 20.9 
+ ARC-c 
+ Accuracy 
+ 25-shot 
+ 51.7 
+ 61.6 
+ ARC-e 
+ Accuracy 
+ 0-shot 
+ 75.8 
+ 81.6 
+ WinoGrande 
+ Accuracy 
+ 5-shot 
+ 66.8 
+ 71.7 
+ BIG-Bench Hard 
+ Accuracy 
+ few-shot 
+ 44.3 
+ 52.9 
+ DROP 
+ Token F1 score 
+ 1-shot 
+ 53.9 
+ 60.8 
+ Multilingual
+ Benchmark 
+ Metric 
+ n-shot 
+ E2B IT 
+ E4B IT 
+ MGSM 
+ Accuracy 
+ 0-shot 
+ 53.1 
+ 60.7 
+ WMT24++ (ChrF) 
+ Character-level F-score 
+ 0-shot 
+ 42.7 
+ 50.1 
+ Include 
+ Accuracy 
+ 0-shot 
+ 38.6 
+ 57.2 
+ MMLU (ProX) 
+ Accuracy 
+ 0-shot 
+ 8.1 
+ 19.9 
+ OpenAI MMLU 
+ Accuracy 
+ 0-shot 
+ 22.3 
+ 35.6 
+ Global-MMLU 
+ Accuracy 
+ 0-shot 
+ 55.1 
+ 60.3 
+ ECLeKTic 
+ ECLeKTic score 
+ 0-shot 
+ 2.5 
+ 1.9 
+ STEM and code
+ Benchmark 
+ Metric 
+ n-shot 
+ E2B IT 
+ E4B IT 
+ GPQA Diamond 
+ RelaxedAccuracy/accuracy 
+ 0-shot 
+ 24.8 
+ 23.7 
+ LiveCodeBench v5 
+ pass@1 
+ 0-shot 
+ 18.6 
+ 25.7 
+ Codegolf v2.2 
+ pass@1 
+ 0-shot 
+ 11.0 
+ 16.8 
+ AIME 2025 
+ Accuracy 
+ 0-shot 
+ 6.7 
+ 11.6 
+ Additional benchmarks
+ Benchmark 
+ Metric 
+ n-shot 
+ E2B IT 
+ E4B IT 
+ MMLU 
+ Accuracy 
+ 0-shot 
+ 60.1 
+ 64.9 
+ MBPP 
+ pass@1 
+ 3-shot 
+ 56.6 
+ 63.6 
+ HumanEval 
+ pass@1 
+ 0-shot 
+ 66.5 
+ 75.0 
+ LiveCodeBench 
+ pass@1 
+ 0-shot 
+ 13.2 
+ 13.2 
+ HiddenMath 
+ Accuracy 
+ 0-shot 
+ 27.7 
+ 37.7 
+ Global-MMLU-Lite 
+ Accuracy 
+ 0-shot 
+ 59.0 
+ 64.5 
+ MMLU (Pro) 
+ Accuracy 
+ 0-shot 
+ 40.5 
+ 50.6 
+ Ethics and Safety
+ Ethics and safety evaluation approach and results. 
+ Evaluation Approach
+ Our evaluation methods include structured evaluations and internal red-teaming
+testing of relevant content policies. Red-teaming was conducted by a number of
+different teams, each with different goals and human evaluation metrics. These
+models were evaluated against a number of different categories relevant to
+ethics and safety, including: 
+ Child Safety : Evaluation of text-to-text and image to text prompts
+covering child safety policies, including child sexual abuse and
+exploitation. 
+ Content Safety: Evaluation of text-to-text and image to text prompts
+covering safety policies including, harassment, violence and gore, and hate
+speech. 
+ Representational Harms : Evaluation of text-to-text and image to text
+prompts covering safety policies including bias, stereotyping, and harmful
+associations or inaccuracies. 
+ In addition to development level evaluations, we conduct "assurance
+evaluations" which are our 'arms-length' internal evaluations for responsibility
+governance decision making. They are conducted separately from the model
+development team, to inform decision making about release. High level findings
+are fed back to the model team, but prompt sets are held-out to prevent
+overfitting and preserve the results' ability to inform decision making. Notable
+assurance evaluation results are reported to our Responsibility & Safety Council
+as part of release review. 
+ Evaluation Results
+ For all areas of safety testing, we saw safe levels of performance across the
+categories of child safety, content safety, and representational harms relative
+to previous Gemma models. All testing was conducted without safety filters to
+evaluate the model capabilities and behaviors. For text-to-text, image-to-text,
+and audio-to-text, and across all model sizes, the model produced minimal policy
+violations, and showed significant improvements over previous Gemma models'
+performance with respect to high severity violations. A limitation of our
+evaluations was they included primarily English language prompts. 
+ Usage and Limitations
+ These models have certain limitations that users should be aware of. 
+ Intended Usage
+ Open generative models have a wide range of applications across various
+industries and domains. The following list of potential uses is not
+comprehensive. The purpose of this list is to provide contextual information
+about the possible use-cases that the model creators considered as part of model
+training and development. 
+ Content Creation and Communication 
+ Text Generation : Generate creative text formats such as
+poems, scripts, code, marketing copy, and email drafts. 
+ Chatbots and Conversational AI : Power conversational
+interfaces for customer service, virtual assistants, or interactive
+applications. 
+ Text Summarization : Generate concise summaries of a text
+corpus, research papers, or reports. 
+ Image Data Extraction : Extract, interpret, and summarize
+visual data for text communications. 
+ Audio Data Extraction : Transcribe spoken language, translate speech
+to text in other languages, and analyze sound-based data. 
+ Research and Education 
+ Natural Language Processing (NLP) and generative model
+Research : These models can serve as a foundation for researchers to
+experiment with generative models and NLP techniques, develop
+algorithms, and contribute to the advancement of the field. 
+ Language Learning Tools : Support interactive language
+learning experiences, aiding in grammar correction or providing writing
+practice. 
+ Knowledge Exploration : Assist researchers in exploring large
+bodies of data by generating summaries or answering questions about
+specific topics. 
+ Limitations
+ Training Data 
+ The quality and diversity of the training data significantly
+influence the model's capabilities. Biases or gaps in the training data
+can lead to limitations in the model's responses. 
+ The scope of the training dataset determines the subject areas
+the model can handle effectively. 
+ Context and Task Complexity 
+ Models are better at tasks that can be framed with clear
+prompts and instructions. Open-ended or highly complex tasks might be
+challenging. 
+ A model's performance can be influenced by the amount of context
+provided (longer context generally leads to better outputs, up to a
+certain point). 
+ Language Ambiguity and Nuance 
+ Natural language is inherently complex. Models might struggle
+to grasp subtle nuances, sarcasm, or figurative language. 
+ Factual Accuracy 
+ Models generate responses based on information they learned
+from their training datasets, but they are not knowledge bases. They
+may generate incorrect or outdated factual statements. 
+ Common Sense 
+ Models rely on statistical patterns in language. They might
+lack the ability to apply common sense reasoning in certain situations. 
+ Ethical Considerations and Risks
+ The development of generative models raises several ethical concerns. In
+creating an open model, we have carefully considered the following: 
+ Bias and Fairness 
+ Generative models trained on large-scale, real-world text and image data
+can reflect socio-cultural biases embedded in the training material.
+These models underwent careful scrutiny, input data pre-processing
+described and posterior evaluations reported in this card. 
+ Misinformation and Misuse 
+ Generative models can be misused to generate text that is
+false, misleading, or harmful. 
+ Guidelines are provided for responsible use with the model, see the
+ Responsible Generative AI Toolkit . 
+ Transparency and Accountability: 
+ This model card summarizes details on the models' architecture,
+capabilities, limitations, and evaluation processes. 
+ A responsibly developed open model offers the opportunity to
+share innovation by making generative model technology accessible to
+developers and researchers across the AI ecosystem. 
+ Risks identified and mitigations: 
+ Perpetuation of biases : It's encouraged to perform continuous monitoring
+(using evaluation metrics, human review) and the exploration of de-biasing
+techniques during model training, fine-tuning, and other use cases. 
+ Generation of harmful content : Mechanisms and guidelines for content
+safety are essential. Developers are encouraged to exercise caution and
+implement appropriate content safety safeguards based on their specific
+product policies and application use cases. 
+ Misuse for malicious purposes : Technical limitations and developer
+and end-user education can help mitigate against malicious applications of
+generative models. Educational resources and reporting mechanisms for users
+to flag misuse are provided. Prohibited uses of Gemma models are outlined
+in the
+ Gemma Prohibited Use Policy . 
+ Privacy violations : Models were trained on data filtered for removal of
+certain personal information and other sensitive data. Developers are
+encouraged to adhere to privacy regulations with privacy-preserving
+techniques. 
+ Benefits
+ At the time of release, this family of models provides high-performance open
+generative model implementations designed from the ground up for responsible AI
+development compared to similarly sized models. 
+ Using the benchmark evaluation metrics described in this document, these models
+have shown to provide superior performance to other, comparably-sized open model
+alternatives. 
+ Downloads last month 34,578 
+ ","eos_token":"<eos>","pad_token":"<pad>","unk_token":"<unk>","use_default_system_prompt":false},"chat_template_jinja":"{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n {%- if messages[0]['content'] is string -%}\n {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n {%- else -%}\n {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n {%- endif -%}\n {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n {%- set first_user_prefix = \"\" -%}\n {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n {%- endif -%}\n {%- if (message['role'] == 'assistant') -%}\n {%- set role = \"model\" -%}\n {%- else -%}\n {%- set role = message['role'] -%}\n {%- endif -%}\n {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n {%- if message['content'] is string -%}\n {{ message['content'] | trim }}\n {%- elif message['content'] is iterable -%}\n {%- for item in message['content'] -%}\n {%- if item['type'] == 'audio' -%}\n {{ '<audio_soft_token>' }}\n {%- elif item['type'] == 'image' -%}\n {{ '<image_soft_token>' }}\n {%- elif item['type'] == 'text' -%}\n {{ item['text'] | trim }}\n {%- endif -%}\n {%- endfor -%}\n {%- else -%}\n {{ raise_exception(\"Invalid content type\") }}\n {%- endif -%}\n {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"},"createdAt":"2025-06-03T18:17:07.000Z","discussionsDisabled":false,"discussionsSorting":"recently-created","downloads":34578,"downloadsAllTime":1360665,"id":"google/gemma-3n-E4B-it","isLikedByUser":false,"availableInferenceProviders":[{"provider":"together","modelStatus":"live","providerStatus":"live","providerId":"google/gemma-3n-E4B-it","task":"conversational","adapterWeightsPath":"model-00001-of-00004.safetensors","features":{"structuredOutput":true,"toolCalling":false},"isCheapestPricingOutput":true,"isFastestThroughput":true,"isModelAuthor":false,"tokensPerSecond":56.50264567003861,"pricingOutput":0.12000000000000001}],"showHuggingChatEntry":true,"inference":"warm","lastModified":"2025-07-14T13:56:17.000Z","likes":919,"pipeline_tag":"image-text-to-text","library_name":"transformers","librariesOther":[],"trackDownloads":true,"model-index":null,"private":false,"repoType":"model","gated":"manual","tags":["transformers","safetensors","gemma3n","image-text-to-text","automatic-speech-recognition","automatic-speech-translation","audio-text-to-text","video-text-to-text","conversational","arxiv:1905.07830","arxiv:1905.10044","arxiv:1911.11641","arxiv:1904.09728","arxiv:1705.03551","arxiv:1911.01547","arxiv:1907.10641","arxiv:1903.00161","arxiv:2210.03057","arxiv:2502.12404","arxiv:2411.19799","arxiv:2009.03300","arxiv:2502.21228","arxiv:2311.12022","arxiv:2403.07974","arxiv:2108.07732","arxiv:2107.03374","base_model:google/gemma-3n-E4B","base_model:finetune:google/gemma-3n-E4B","license:gemma","endpoints_compatible","region:us"],"tag_objs":[{"id":"image-text-to-text","label":"Image-Text-to-Text","type":"pipeline_tag","subType":"multimodal"},{"id":"transformers","label":"Transformers","type":"library"},{"id":"safetensors","label":"Safetensors","type":"library"},{"id":"gemma3n","label":"gemma3n","type":"other","clickable":true},{"id":"automatic-speech-recognition","label":"automatic-speech-recognition","type":"other","clickable":true},{"id":"automatic-speech-translation","label":"automatic-speech-translation","type":"other","clickable":true},{"id":"audio-text-to-text","label":"audio-text-to-text","type":"other","clickable":true},{"id":"video-text-to-text","label":"video-text-to-text","type":"other","clickable":true},{"id":"conversational","label":"conversational","type":"other","clickable":true},{"id":"base_model:google/gemma-3n-E4B","label":"base_model:google/gemma-3n-E4B","type":"other","clickable":true},{"id":"base_model:finetune:google/gemma-3n-E4B","label":"base_model:finetune:google/gemma-3n-E4B","type":"other","clickable":true},{"id":"endpoints_compatible","label":"Inference Endpoints","type":"other","clickable":true},{"id":"arxiv:1905.07830","label":"arxiv:1905.07830","type":"arxiv","extra":{"paperTitle":"HellaSwag: Can a Machine Really Finish Your Sentence?"}},{"id":"arxiv:1905.10044","label":"arxiv:1905.10044","type":"arxiv","extra":{"paperTitle":"BoolQ: Exploring the Surprising Difficulty of Natural Yes/No Questions"}},{"id":"arxiv:1911.11641","label":"arxiv:1911.11641","type":"arxiv","extra":{"paperTitle":"PIQA: Reasoning about Physical Commonsense in Natural Language"}},{"id":"arxiv:1904.09728","label":"arxiv:1904.09728","type":"arxiv","extra":{"paperTitle":"SocialIQA: Commonsense Reasoning about Social Interactions"}},{"id":"arxiv:1705.03551","label":"arxiv:1705.03551","type":"arxiv","extra":{"paperTitle":"TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for\n Reading Comprehension"}},{"id":"arxiv:1911.01547","label":"arxiv:1911.01547","type":"arxiv","extra":{"paperTitle":"On the Measure of Intelligence"}},{"id":"arxiv:1907.10641","label":"arxiv:1907.10641","type":"arxiv","extra":{"paperTitle":"WinoGrande: An Adversarial Winograd Schema Challenge at Scale"}},{"id":"arxiv:1903.00161","label":"arxiv:1903.00161","type":"arxiv","extra":{"paperTitle":"DROP: A Reading Comprehension Benchmark Requiring Discrete Reasoning\n Over Paragraphs"}},{"id":"arxiv:2210.03057","label":"arxiv:2210.03057","type":"arxiv","extra":{"paperTitle":"Language Models are Multilingual Chain-of-Thought Reasoners"}},{"id":"arxiv:2502.12404","label":"arxiv:2502.12404","type":"arxiv","extra":{"paperTitle":"WMT24++: Expanding the Language Coverage of WMT24 to 55 Languages &\n Dialects"}},{"id":"arxiv:2411.19799","label":"arxiv:2411.19799","type":"arxiv","extra":{"paperTitle":"INCLUDE: Evaluating Multilingual Language Understanding with Regional\n Knowledge"}},{"id":"arxiv:2009.03300","label":"arxiv:2009.03300","type":"arxiv","extra":{"paperTitle":"Measuring Massive Multitask Language Understanding"}},{"id":"arxiv:2502.21228","label":"arxiv:2502.21228","type":"arxiv","extra":{"paperTitle":"ECLeKTic: a Novel Challenge Set for Evaluation of Cross-Lingual\n Knowledge Transfer"}},{"id":"arxiv:2311.12022","label":"arxiv:2311.12022","type":"arxiv","extra":{"paperTitle":"GPQA: A Graduate-Level Google-Proof Q&A Benchmark"}},{"id":"arxiv:2403.07974","label":"arxiv:2403.07974","type":"arxiv","extra":{"paperTitle":"LiveCodeBench: Holistic and Contamination Free Evaluation of Large\n Language Models for Code"}},{"id":"arxiv:2108.07732","label":"arxiv:2108.07732","type":"arxiv","extra":{"paperTitle":"Program Synthesis with Large Language Models"}},{"id":"arxiv:2107.03374","label":"arxiv:2107.03374","type":"arxiv","extra":{"paperTitle":"Evaluating Large Language Models Trained on Code"}},{"id":"license:gemma","label":"gemma","type":"license"},{"type":"region","label":"🇺🇸 Region: US","id":"region:us"}],"transformersInfo":{"auto_model":"AutoModelForMultimodalLM","pipeline_tag":"image-text-to-text","processor":"AutoProcessor"},"widgetData":[{"text":"Hi, what can you help me with?"},{"text":"What is 84 * 3 / 2?"},{"text":"Tell me an interesting fact about the universe!"},{"text":"Explain quantum computing in simple terms."}],"safetensors":{"parameters":{"BF16":7849978192},"total":7849978192,"sharded":true,"totalFileSize":15700353135},"hasBlockedOids":false,"region":"us","isQuantized":false},"inferenceContextData":{"billableEntities":[],"entityName2Providers":{},"defaultProviders":[{"isOriginalProvider":false,"name":"together","enabled":true,"position":5,"isReleased":true,"accuratePricing":true}]},"canWrite":false}"> Safetensors Model size 8B params Tensor type BF16 · Chat template Files info ","eos_token":"<eos>","pad_token":"<pad>","unk_token":"<unk>","use_default_system_prompt":false},"chat_template_jinja":"{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n {%- if messages[0]['content'] is string -%}\n {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n {%- else -%}\n {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n {%- endif -%}\n {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n {%- set first_user_prefix = \"\" -%}\n {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n {%- endif -%}\n {%- if (message['role'] == 'assistant') -%}\n {%- set role = \"model\" -%}\n {%- else -%}\n {%- set role = message['role'] -%}\n {%- endif -%}\n {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n {%- if message['content'] is string -%}\n {{ message['content'] | trim }}\n {%- elif message['content'] is iterable -%}\n {%- for item in message['content'] -%}\n {%- if item['type'] == 'audio' -%}\n {{ '<audio_soft_token>' }}\n {%- elif item['type'] == 'image' -%}\n {{ '<image_soft_token>' }}\n {%- elif item['type'] == 'text' -%}\n {{ item['text'] | trim }}\n {%- endif -%}\n {%- endfor -%}\n {%- else -%}\n {{ raise_exception(\"Invalid content type\") }}\n {%- endif -%}\n {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"},"createdAt":"2025-06-03T18:17:07.000Z","discussionsDisabled":false,"discussionsSorting":"recently-created","downloads":34578,"downloadsAllTime":1360665,"id":"google/gemma-3n-E4B-it","isLikedByUser":false,"availableInferenceProviders":[{"provider":"together","modelStatus":"live","providerStatus":"live","providerId":"google/gemma-3n-E4B-it","task":"conversational","adapterWeightsPath":"model-00001-of-00004.safetensors","features":{"structuredOutput":true,"toolCalling":false},"isCheapestPricingOutput":true,"isFastestThroughput":true,"isModelAuthor":false,"tokensPerSecond":56.50264567003861,"pricingOutput":0.12000000000000001}],"showHuggingChatEntry":true,"inference":"warm","lastModified":"2025-07-14T13:56:17.000Z","likes":919,"pipeline_tag":"image-text-to-text","library_name":"transformers","librariesOther":[],"trackDownloads":true,"model-index":null,"private":false,"repoType":"model","gated":"manual","tags":["transformers","safetensors","gemma3n","image-text-to-text","automatic-speech-recognition","automatic-speech-translation","audio-text-to-text","video-text-to-text","conversational","arxiv:1905.07830","arxiv:1905.10044","arxiv:1911.11641","arxiv:1904.09728","arxiv:1705.03551","arxiv:1911.01547","arxiv:1907.10641","arxiv:1903.00161","arxiv:2210.03057","arxiv:2502.12404","arxiv:2411.19799","arxiv:2009.03300","arxiv:2502.21228","arxiv:2311.12022","arxiv:2403.07974","arxiv:2108.07732","arxiv:2107.03374","base_model:google/gemma-3n-E4B","base_model:finetune:google/gemma-3n-E4B","license:gemma","endpoints_compatible","region:us"],"tag_objs":[{"id":"image-text-to-text","label":"Image-Text-to-Text","type":"pipeline_tag","subType":"multimodal"},{"id":"transformers","label":"Transformers","type":"library"},{"id":"safetensors","label":"Safetensors","type":"library"},{"id":"gemma3n","label":"gemma3n","type":"other","clickable":true},{"id":"automatic-speech-recognition","label":"automatic-speech-recognition","type":"other","clickable":true},{"id":"automatic-speech-translation","label":"automatic-speech-translation","type":"other","clickable":true},{"id":"audio-text-to-text","label":"audio-text-to-text","type":"other","clickable":true},{"id":"video-text-to-text","label":"video-text-to-text","type":"other","clickable":true},{"id":"conversational","label":"conversational","type":"other","clickable":true},{"id":"base_model:google/gemma-3n-E4B","label":"base_model:google/gemma-3n-E4B","type":"other","clickable":true},{"id":"base_model:finetune:google/gemma-3n-E4B","label":"base_model:finetune:google/gemma-3n-E4B","type":"other","clickable":true},{"id":"endpoints_compatible","label":"Inference Endpoints","type":"other","clickable":true},{"id":"arxiv:1905.07830","label":"arxiv:1905.07830","type":"arxiv","extra":{"paperTitle":"HellaSwag: Can a Machine Really Finish Your Sentence?"}},{"id":"arxiv:1905.10044","label":"arxiv:1905.10044","type":"arxiv","extra":{"paperTitle":"BoolQ: Exploring the Surprising Difficulty of Natural Yes/No Questions"}},{"id":"arxiv:1911.11641","label":"arxiv:1911.11641","type":"arxiv","extra":{"paperTitle":"PIQA: Reasoning about Physical Commonsense in Natural Language"}},{"id":"arxiv:1904.09728","label":"arxiv:1904.09728","type":"arxiv","extra":{"paperTitle":"SocialIQA: Commonsense Reasoning about Social Interactions"}},{"id":"arxiv:1705.03551","label":"arxiv:1705.03551","type":"arxiv","extra":{"paperTitle":"TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for\n Reading Comprehension"}},{"id":"arxiv:1911.01547","label":"arxiv:1911.01547","type":"arxiv","extra":{"paperTitle":"On the Measure of Intelligence"}},{"id":"arxiv:1907.10641","label":"arxiv:1907.10641","type":"arxiv","extra":{"paperTitle":"WinoGrande: An Adversarial Winograd Schema Challenge at Scale"}},{"id":"arxiv:1903.00161","label":"arxiv:1903.00161","type":"arxiv","extra":{"paperTitle":"DROP: A Reading Comprehension Benchmark Requiring Discrete Reasoning\n Over Paragraphs"}},{"id":"arxiv:2210.03057","label":"arxiv:2210.03057","type":"arxiv","extra":{"paperTitle":"Language Models are Multilingual Chain-of-Thought Reasoners"}},{"id":"arxiv:2502.12404","label":"arxiv:2502.12404","type":"arxiv","extra":{"paperTitle":"WMT24++: Expanding the Language Coverage of WMT24 to 55 Languages &\n Dialects"}},{"id":"arxiv:2411.19799","label":"arxiv:2411.19799","type":"arxiv","extra":{"paperTitle":"INCLUDE: Evaluating Multilingual Language Understanding with Regional\n Knowledge"}},{"id":"arxiv:2009.03300","label":"arxiv:2009.03300","type":"arxiv","extra":{"paperTitle":"Measuring Massive Multitask Language Understanding"}},{"id":"arxiv:2502.21228","label":"arxiv:2502.21228","type":"arxiv","extra":{"paperTitle":"ECLeKTic: a Novel Challenge Set for Evaluation of Cross-Lingual\n Knowledge Transfer"}},{"id":"arxiv:2311.12022","label":"arxiv:2311.12022","type":"arxiv","extra":{"paperTitle":"GPQA: A Graduate-Level Google-Proof Q&A Benchmark"}},{"id":"arxiv:2403.07974","label":"arxiv:2403.07974","type":"arxiv","extra":{"paperTitle":"LiveCodeBench: Holistic and Contamination Free Evaluation of Large\n Language Models for Code"}},{"id":"arxiv:2108.07732","label":"arxiv:2108.07732","type":"arxiv","extra":{"paperTitle":"Program Synthesis with Large Language Models"}},{"id":"arxiv:2107.03374","label":"arxiv:2107.03374","type":"arxiv","extra":{"paperTitle":"Evaluating Large Language Models Trained on Code"}},{"id":"license:gemma","label":"gemma","type":"license"},{"type":"region","label":"🇺🇸 Region: US","id":"region:us"}],"transformersInfo":{"auto_model":"AutoModelForMultimodalLM","pipeline_tag":"image-text-to-text","processor":"AutoProcessor"},"widgetData":[{"text":"Hi, what can you help me with?"},{"text":"What is 84 * 3 / 2?"},{"text":"Tell me an interesting fact about the universe!"},{"text":"Explain quantum computing in simple terms."}],"safetensors":{"parameters":{"BF16":7849978192},"total":7849978192,"sharded":true,"totalFileSize":15700353135},"hasBlockedOids":false,"region":"us","isQuantized":false},"queryParams":{},"inferenceContextData":{"billableEntities":[],"entityName2Providers":{},"defaultProviders":[{"isOriginalProvider":false,"name":"together","enabled":true,"position":5,"isReleased":true,"accuratePricing":true}]},"linkToInferenceDiscussion":{"url":"/spaces/huggingface/InferenceSupport/discussions/2997","numReactions":58},"isLoggedIn":false,"canWrite":false,"examples":[{"text":"Hi, what can you help me with?"},{"text":"What is 84 * 3 / 2?"},{"text":"Tell me an interesting fact about the universe!"},{"text":"Explain quantum computing in simple terms."}],"initialSelectedProvider":"together","widgetType":"conversational","isMaximized":false,"isMac":false}}"> Inference Providers NEW Together AI Image-Text-to-Text Examples Input a message to start chatting with google/gemma-3n-E4B-it . Send View Code Snippets Compare providers Model tree for google/gemma-3n-E4B-it Base model google/gemma-3n-E4B Finetuned ( 9 ) this model Adapters 12 models Finetunes 59 models Quantizations 71 models Spaces using google/gemma-3n-E4B-it 100 🔊 Steveeeeeeen/SpeechLLM-Playbook ⚡ huggingface-projects/gemma-3n-E4B-it 📈 ginigen-ai/smol-worldcup ⚡ jairwaal/image 📊 EuroEval/euroeval_leaderboard ✍️ dvpearl/REFRAME ⚡ Jakob08/moneychatbot ⚡ Secondprinsipal/image + 95 Spaces + 92 Spaces Collections including google/gemma-3n-E4B-it Google's Gemma models family Collection 334 items • Updated 20 days ago • 841 Gemma 3n Collection 4 items • Updated 20 days ago • 274 Papers for google/gemma-3n-E4B-it ECLeKTic: a Novel Challenge Set for Evaluation of Cross-Lingual
+ Knowledge Transfer Paper • 2502.21228 • Published Feb 28, 2025 • 8 WMT24++: Expanding the Language Coverage of WMT24 to 55 Languages &
+ Dialects Paper • 2502.12404 • Published Feb 18, 2025 • 5 INCLUDE: Evaluating Multilingual Language Understanding with Regional
+ Knowledge Paper • 2411.19799 • Published Nov 29, 2024 • 16 LiveCodeBench: Holistic and Contamination Free Evaluation of Large
+ Language Models for Code Paper • 2403.07974 • Published Mar 12, 2024 • 5 GPQA: A Graduate-Level Google-Proof Q&A Benchmark Paper • 2311.12022 • Published Nov 20, 2023 • 37 ","eos_token":"<eos>","pad_token":"<pad>","unk_token":"<unk>","use_default_system_prompt":false},"chat_template_jinja":"{{ bos_token }}\n{%- if messages[0]['role'] == 'system' -%}\n {%- if messages[0]['content'] is string -%}\n {%- set first_user_prefix = messages[0]['content'] + '\n\n' -%}\n {%- else -%}\n {%- set first_user_prefix = messages[0]['content'][0]['text'] + '\n\n' -%}\n {%- endif -%}\n {%- set loop_messages = messages[1:] -%}\n{%- else -%}\n {%- set first_user_prefix = \"\" -%}\n {%- set loop_messages = messages -%}\n{%- endif -%}\n{%- for message in loop_messages -%}\n {%- if (message['role'] == 'user') != (loop.index0 % 2 == 0) -%}\n {{ raise_exception(\"Conversation roles must alternate user/assistant/user/assistant/...\") }}\n {%- endif -%}\n {%- if (message['role'] == 'assistant') -%}\n {%- set role = \"model\" -%}\n {%- else -%}\n {%- set role = message['role'] -%}\n {%- endif -%}\n {{ '<start_of_turn>' + role + '\n' + (first_user_prefix if loop.first else \"\") }}\n {%- if message['content'] is string -%}\n {{ message['content'] | trim }}\n {%- elif message['content'] is iterable -%}\n {%- for item in message['content'] -%}\n {%- if item['type'] == 'audio' -%}\n {{ '<audio_soft_token>' }}\n {%- elif item['type'] == 'image' -%}\n {{ '<image_soft_token>' }}\n {%- elif item['type'] == 'text' -%}\n {{ item['text'] | trim }}\n {%- endif -%}\n {%- endfor -%}\n {%- else -%}\n {{ raise_exception(\"Invalid content type\") }}\n {%- endif -%}\n {{ '<end_of_turn>\n' }}\n{%- endfor -%}\n{%- if add_generation_prompt -%}\n {{'<start_of_turn>model\n'}}\n{%- endif -%}\n"},"createdAt":"2025-06-03T18:17:07.000Z","discussionsDisabled":false,"discussionsSorting":"recently-created","downloads":34578,"downloadsAllTime":1360665,"id":"google/gemma-3n-E4B-it","isLikedByUser":false,"availableInferenceProviders":[{"provider":"together","modelStatus":"live","providerStatus":"live","providerId":"google/gemma-3n-E4B-it","task":"conversational","adapterWeightsPath":"model-00001-of-00004.safetensors","features":{"structuredOutput":true,"toolCalling":false},"isCheapestPricingOutput":true,"isFastestThroughput":true,"isModelAuthor":false,"tokensPerSecond":56.50264567003861,"pricingOutput":0.12000000000000001}],"showHuggingChatEntry":true,"inference":"warm","lastModified":"2025-07-14T13:56:17.000Z","likes":919,"pipeline_tag":"image-text-to-text","library_name":"transformers","librariesOther":[],"trackDownloads":true,"model-index":null,"private":false,"repoType":"model","gated":"manual","tags":["transformers","safetensors","gemma3n","image-text-to-text","automatic-speech-recognition","automatic-speech-translation","audio-text-to-text","video-text-to-text","conversational","arxiv:1905.07830","arxiv:1905.10044","arxiv:1911.11641","arxiv:1904.09728","arxiv:1705.03551","arxiv:1911.01547","arxiv:1907.10641","arxiv:1903.00161","arxiv:2210.03057","arxiv:2502.12404","arxiv:2411.19799","arxiv:2009.03300","arxiv:2502.21228","arxiv:2311.12022","arxiv:2403.07974","arxiv:2108.07732","arxiv:2107.03374","base_model:google/gemma-3n-E4B","base_model:finetune:google/gemma-3n-E4B","license:gemma","endpoints_compatible","region:us"],"tag_objs":[{"id":"image-text-to-text","label":"Image-Text-to-Text","type":"pipeline_tag","subType":"multimodal"},{"id":"transformers","label":"Transformers","type":"library"},{"id":"safetensors","label":"Safetensors","type":"library"},{"id":"gemma3n","label":"gemma3n","type":"other","clickable":true},{"id":"automatic-speech-recognition","label":"automatic-speech-recognition","type":"other","clickable":true},{"id":"automatic-speech-translation","label":"automatic-speech-translation","type":"other","clickable":true},{"id":"audio-text-to-text","label":"audio-text-to-text","type":"other","clickable":true},{"id":"video-text-to-text","label":"video-text-to-text","type":"other","clickable":true},{"id":"conversational","label":"conversational","type":"other","clickable":true},{"id":"base_model:google/gemma-3n-E4B","label":"base_model:google/gemma-3n-E4B","type":"other","clickable":true},{"id":"base_model:finetune:google/gemma-3n-E4B","label":"base_model:finetune:google/gemma-3n-E4B","type":"other","clickable":true},{"id":"endpoints_compatible","label":"Inference Endpoints","type":"other","clickable":true},{"id":"arxiv:1905.07830","label":"arxiv:1905.07830","type":"arxiv","extra":{"paperTitle":"HellaSwag: Can a Machine Really Finish Your Sentence?"}},{"id":"arxiv:1905.10044","label":"arxiv:1905.10044","type":"arxiv","extra":{"paperTitle":"BoolQ: Exploring the Surprising Difficulty of Natural Yes/No Questions"}},{"id":"arxiv:1911.11641","label":"arxiv:1911.11641","type":"arxiv","extra":{"paperTitle":"PIQA: Reasoning about Physical Commonsense in Natural Language"}},{"id":"arxiv:1904.09728","label":"arxiv:1904.09728","type":"arxiv","extra":{"paperTitle":"SocialIQA: Commonsense Reasoning about Social Interactions"}},{"id":"arxiv:1705.03551","label":"arxiv:1705.03551","type":"arxiv","extra":{"paperTitle":"TriviaQA: A Large Scale Distantly Supervised Challenge Dataset for\n Reading Comprehension"}},{"id":"arxiv:1911.01547","label":"arxiv:1911.01547","type":"arxiv","extra":{"paperTitle":"On the Measure of Intelligence"}},{"id":"arxiv:1907.10641","label":"arxiv:1907.10641","type":"arxiv","extra":{"paperTitle":"WinoGrande: An Adversarial Winograd Schema Challenge at Scale"}},{"id":"arxiv:1903.00161","label":"arxiv:1903.00161","type":"arxiv","extra":{"paperTitle":"DROP: A Reading Comprehension Benchmark Requiring Discrete Reasoning\n Over Paragraphs"}},{"id":"arxiv:2210.03057","label":"arxiv:2210.03057","type":"arxiv","extra":{"paperTitle":"Language Models are Multilingual Chain-of-Thought Reasoners"}},{"id":"arxiv:2502.12404","label":"arxiv:2502.12404","type":"arxiv","extra":{"paperTitle":"WMT24++: Expanding the Language Coverage of WMT24 to 55 Languages &\n Dialects"}},{"id":"arxiv:2411.19799","label":"arxiv:2411.19799","type":"arxiv","extra":{"paperTitle":"INCLUDE: Evaluating Multilingual Language Understanding with Regional\n Knowledge"}},{"id":"arxiv:2009.03300","label":"arxiv:2009.03300","type":"arxiv","extra":{"paperTitle":"Measuring Massive Multitask Language Understanding"}},{"id":"arxiv:2502.21228","label":"arxiv:2502.21228","type":"arxiv","extra":{"paperTitle":"ECLeKTic: a Novel Challenge Set for Evaluation of Cross-Lingual\n Knowledge Transfer"}},{"id":"arxiv:2311.12022","label":"arxiv:2311.12022","type":"arxiv","extra":{"paperTitle":"GPQA: A Graduate-Level Google-Proof Q&A Benchmark"}},{"id":"arxiv:2403.07974","label":"arxiv:2403.07974","type":"arxiv","extra":{"paperTitle":"LiveCodeBench: Holistic and Contamination Free Evaluation of Large\n Language Models for Code"}},{"id":"arxiv:2108.07732","label":"arxiv:2108.07732","type":"arxiv","extra":{"paperTitle":"Program Synthesis with Large Language Models"}},{"id":"arxiv:2107.03374","label":"arxiv:2107.03374","type":"arxiv","extra":{"paperTitle":"Evaluating Large Language Models Trained on Code"}},{"id":"license:gemma","label":"gemma","type":"license"},{"type":"region","label":"🇺🇸 Region: US","id":"region:us"}],"transformersInfo":{"auto_model":"AutoModelForMultimodalLM","pipeline_tag":"image-text-to-text","processor":"AutoProcessor"},"widgetData":[{"text":"Hi, what can you help me with?"},{"text":"What is 84 * 3 / 2?"},{"text":"Tell me an interesting fact about the universe!"},{"text":"Explain quantum computing in simple terms."}],"safetensors":{"parameters":{"BF16":7849978192},"total":7849978192,"sharded":true,"totalFileSize":15700353135},"hasBlockedOids":false,"region":"us","isQuantized":false}}"> System theme Company TOS Privacy About Careers Website Models Datasets Spaces Pricing Docs 

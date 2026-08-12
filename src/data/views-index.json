@@ -1,0 +1,47 @@
+{
+ "count": 7,
+ "files": [
+  {
+   "path": "views/00-landscape.png",
+   "name": "00-landscape.png",
+   "ext": "png",
+   "size": 120986
+  },
+  {
+   "path": "views/01-ceiling-over-time.png",
+   "name": "01-ceiling-over-time.png",
+   "ext": "png",
+   "size": 147199
+  },
+  {
+   "path": "views/02-density-over-time.png",
+   "name": "02-density-over-time.png",
+   "ext": "png",
+   "size": 145293
+  },
+  {
+   "path": "views/03-vram-vs-reliq.png",
+   "name": "03-vram-vs-reliq.png",
+   "ext": "png",
+   "size": 89938
+  },
+  {
+   "path": "views/04-top15-ranked.png",
+   "name": "04-top15-ranked.png",
+   "ext": "png",
+   "size": 110858
+  },
+  {
+   "path": "views/05-bench-corr.png",
+   "name": "05-bench-corr.png",
+   "ext": "png",
+   "size": 81482
+  },
+  {
+   "path": "views/06-ci-width-vs-coverage.png",
+   "name": "06-ci-width-vs-coverage.png",
+   "ext": "png",
+   "size": 86576
+  }
+ ]
+}

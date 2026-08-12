@@ -1,0 +1,134 @@
+[
+  {
+    "name": "OLMo-2-13B-Instruct",
+    "family": "AI2",
+    "released": "2024-11-26",
+    "params_b": 13.0,
+    "active_params_b": 13.0,
+    "arch": "dense",
+    "quant": "Q4_K_M",
+    "model_gb": 8.06,
+    "kv_gb": 1.17,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": null,
+      "GPQA": null,
+      "MATH-500": null,
+      "IFEval": 82.6,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://huggingface.co/allenai/OLMo-2-1124-13B-Instruct",
+    "notes": "HF repo is allenai/OLMo-2-1124-13B-Instruct ('November 2024' batch; base repo created 2024-11-19, official blog announcement allenai.org/blog/olmo2 dated November 26, 2024; Instruct repo created 2024-12-18 and post-trained models re-released Jan 3, 2025 after tokenization fix — task's assumed date 2025-02 corrected to official Nov 2024). IFEval 82.6 from official model card performance table (OLMo-2-13B-1124-Instruct row). Card reports MMLU 68.5/GSM8K 87.4/MATH 39.2, not MMLU-Pro/MATH-500/GPQA/ARC-AGI/BFCL, so those are null. Apache 2.0."
+  },
+  {
+    "name": "OLMoE-1B-7B-0924-Instruct",
+    "family": "AI2",
+    "released": "2024-09-03",
+    "params_b": 7.0,
+    "active_params_b": 1.0,
+    "arch": "moe",
+    "quant": "Q4_K_M",
+    "model_gb": 4.34,
+    "kv_gb": 0.63,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": null,
+      "GPQA": null,
+      "MATH-500": null,
+      "IFEval": 48.1,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://huggingface.co/allenai/OLMoE-1B-7B-0924-Instruct",
+    "notes": "MoE with 1B active / 7B total params (official model card: 'Mixture-of-Experts LLM with 1B active and 7B total parameters released in September 2024 (0924)'; paper arXiv 2409.02060). Task's assumed date 2024-12-16 corrected: official release is September 2024 (model card 0924 naming; arXiv submitted Sept 2024; Sept 3, 2024 per secondary source aiwiki). IFEval 48.1 (0-shot loose acc) from official card eval table (+DPO row). Card reports MMLU 51.9/GSM8K 45.5/HumanEval 54.8, none of MMLU-Pro/GPQA/MATH-500/ARC-AGI/BFCL, so null. Updated OLMoE-1B-7B-0125-Instruct (Jan 2025, IFEval 66.36) exists as the improved variant. Apache 2.0."
+  },
+  {
+    "name": "Olmo-3-7B-Instruct",
+    "family": "AI2",
+    "released": "2025-11-19",
+    "params_b": 7.0,
+    "active_params_b": 7.0,
+    "arch": "dense",
+    "quant": "Q4_K_M",
+    "model_gb": 4.34,
+    "kv_gb": 0.63,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": null,
+      "GPQA": 40.4,
+      "MATH-500": null,
+      "IFEval": 85.6,
+      "ARC-AGI": null,
+      "BFCL": 49.8
+    },
+    "source": "https://huggingface.co/allenai/Olmo-3-7B-Instruct",
+    "notes": "Task's assumed release 2025-06-16 is WRONG: verified official release is November 2025 — HF repo createdAt 2025-11-19, allenai.org/blog/olmo3 published November 20, 2025, paper arXiv 2512.13961 (Dec 2025). Base model is Olmo-3-1025-7B; final RLVR checkpoint released as Olmo-3-7B-Instruct. Scores from official card eval table (final 'Olmo3 Instruct 7B' column): GPQA 40.4, IFEval 85.6, BFCL 49.8. Card reports MATH 87.3/MMLU 69.1 (not MATH-500/MMLU-Pro), no ARC-AGI, so those null. Apache 2.0."
+  },
+  {
+    "name": "Olmo-3-7B-Think",
+    "family": "AI2",
+    "released": "2025-11-18",
+    "params_b": 7.0,
+    "active_params_b": 7.0,
+    "arch": "dense",
+    "quant": "Q4_K_M",
+    "model_gb": 4.34,
+    "kv_gb": 0.63,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": null,
+      "GPQA": 46.2,
+      "MATH-500": null,
+      "IFEval": 88.2,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://huggingface.co/allenai/Olmo-3-7B-Think",
+    "notes": "Long-CoT thinking variant of Olmo 3 7B (RLVR-trained), part of the Nov 2025 OLMo 3 batch (HF createdAt 2025-11-18; blog Nov 20, 2025). Scores from official card eval table (final 'Olmo 3 Think 7B' column): GPQA 46.2, IFEval 88.2. Card reports MATH 95.1/MMLU 77.8 (not MATH-500/MMLU-Pro); BFCL not reported in this card's table, ARC-AGI not reported, so null. Apache 2.0."
+  },
+  {
+    "name": "Olmo-3-32B-Think",
+    "family": "AI2",
+    "released": "2025-11-19",
+    "params_b": 32.0,
+    "active_params_b": 32.0,
+    "arch": "dense",
+    "quant": "Q4_K_M",
+    "model_gb": 19.84,
+    "kv_gb": 2.88,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": null,
+      "GPQA": 58.1,
+      "MATH-500": null,
+      "IFEval": 89.0,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://huggingface.co/allenai/Olmo-3-32B-Think",
+    "notes": "32B flagship of the Nov 2025 OLMo 3 batch (task's assumed OLMo-3-32B 2025-06-16 is WRONG — verified official release Nov 2025: HF createdAt 2025-11-19, blog Nov 20, 2025; base is Olmo-3-1125-32B, created 2025-11-04). No plain 'Olmo-3-32B-Instruct' exists — the 32B variants are Think (this) and Olmo-3.1-32B-Instruct (Dec 2025). Scores from official card eval table (final 'Olmo 3 Think 32B' column): GPQA 58.1, IFEval 89.0. Card reports MATH 96.1/MMLU 85.4 (not MATH-500/MMLU-Pro); BFCL not reported in table, ARC-AGI not reported, so null. Apache 2.0."
+  },
+  {
+    "name": "Olmo-3.1-32B-Instruct",
+    "family": "AI2",
+    "released": "2025-12-10",
+    "params_b": 32.0,
+    "active_params_b": 32.0,
+    "arch": "dense",
+    "quant": "Q4_K_M",
+    "model_gb": 19.84,
+    "kv_gb": 2.88,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": null,
+      "GPQA": 48.6,
+      "MATH-500": null,
+      "IFEval": 88.8,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://huggingface.co/allenai/Olmo-3.1-32B-Instruct",
+    "notes": "NEWER DISCOVERED RELEASE — the most recent OLMo instruct model as of Aug 2026. Released 2025-12-10 (HF createdAt; allenai.org/blog/olmo3 update dated 12/12 announcing 'Olmo 3.1'). SFT+DPO+RLVR from Olmo-3-1125-32B. Scores from official card eval table (final 'Olmo 3.1 32B Instruct' column): GPQA 48.6, IFEval 88.8. Card reports MATH 93.4/MMLU 80.9 (not MATH-500/MMLU-Pro); BFCL and ARC-AGI not reported, so null. No OLMo-4 exists as of Aug 2026 — checked HF allenai org (latest LLM releases are Olmo-3.1-32B-Instruct Dec 2025 and research models OlmoEarth/SERA/tmax/Bolmo mid-2026, none named OLMo-4). Apache 2.0."
+  }
+]

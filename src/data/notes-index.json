@@ -1,0 +1,809 @@
+{
+ "count": 134,
+ "files": [
+  {
+   "path": "research/DeepSeek-R1-0528-README.md",
+   "name": "DeepSeek-R1-0528-README.md",
+   "ext": "md",
+   "size": 14767
+  },
+  {
+   "path": "research/DeepSeek-V3-0324-README.md",
+   "name": "DeepSeek-V3-0324-README.md",
+   "ext": "md",
+   "size": 10655
+  },
+  {
+   "path": "research/DeepSeek-V3.1-README.md",
+   "name": "DeepSeek-V3.1-README.md",
+   "ext": "md",
+   "size": 11340
+  },
+  {
+   "path": "research/DeepSeek-V3.2-Exp-README.md",
+   "name": "DeepSeek-V3.2-Exp-README.md",
+   "ext": "md",
+   "size": 7035
+  },
+  {
+   "path": "research/DeepSeek-V3.2-README.md",
+   "name": "DeepSeek-V3.2-README.md",
+   "ext": "md",
+   "size": 7361
+  },
+  {
+   "path": "research/DeepSeek-V4-Flash-0731-README.md",
+   "name": "DeepSeek-V4-Flash-0731-README.md",
+   "ext": "md",
+   "size": 7238
+  },
+  {
+   "path": "research/DeepSeek-V4-Flash-README.md",
+   "name": "DeepSeek-V4-Flash-README.md",
+   "ext": "md",
+   "size": 13149
+  },
+  {
+   "path": "research/DeepSeek-V4-Pro-README.md",
+   "name": "DeepSeek-V4-Pro-README.md",
+   "ext": "md",
+   "size": 13149
+  },
+  {
+   "path": "research/Kimi-K2-Instruct-0905_readme.md",
+   "name": "Kimi-K2-Instruct-0905_readme.md",
+   "ext": "md",
+   "size": 9894
+  },
+  {
+   "path": "research/Kimi-K2-Thinking_readme.md",
+   "name": "Kimi-K2-Thinking_readme.md",
+   "ext": "md",
+   "size": 16176
+  },
+  {
+   "path": "research/Kimi-K2.5_readme.md",
+   "name": "Kimi-K2.5_readme.md",
+   "ext": "md",
+   "size": 40082
+  },
+  {
+   "path": "research/Kimi-K2.6_readme.md",
+   "name": "Kimi-K2.6_readme.md",
+   "ext": "md",
+   "size": 29325
+  },
+  {
+   "path": "research/Kimi-K3_readme.md",
+   "name": "Kimi-K3_readme.md",
+   "ext": "md",
+   "size": 45261
+  },
+  {
+   "path": "research/aa-api.json",
+   "name": "aa-api.json",
+   "ext": "json",
+   "size": 14904
+  },
+  {
+   "path": "research/aa-deepseek-r1-0528.html",
+   "name": "aa-deepseek-r1-0528.html",
+   "ext": "html",
+   "size": 231324
+  },
+  {
+   "path": "research/aa-deepseek-v3-0324.html",
+   "name": "aa-deepseek-v3-0324.html",
+   "ext": "html",
+   "size": 2993797
+  },
+  {
+   "path": "research/aa-deepseek-v3-1.html",
+   "name": "aa-deepseek-v3-1.html",
+   "ext": "html",
+   "size": 2955198
+  },
+  {
+   "path": "research/aa-deepseek-v3-2.html",
+   "name": "aa-deepseek-v3-2.html",
+   "ext": "html",
+   "size": 2951916
+  },
+  {
+   "path": "research/ai2.json",
+   "name": "ai2.json",
+   "ext": "json",
+   "size": 6180
+  },
+  {
+   "path": "research/ai2_OLMo-2-1124-13B-Instruct.md",
+   "name": "ai2_OLMo-2-1124-13B-Instruct.md",
+   "ext": "md",
+   "size": 9366
+  },
+  {
+   "path": "research/ai2_OLMo-2-13B.md",
+   "name": "ai2_OLMo-2-13B.md",
+   "ext": "md",
+   "size": 29
+  },
+  {
+   "path": "research/ai2_OLMo-3-32B.md",
+   "name": "ai2_OLMo-3-32B.md",
+   "ext": "md",
+   "size": 29
+  },
+  {
+   "path": "research/ai2_OLMo-3-7B.md",
+   "name": "ai2_OLMo-3-7B.md",
+   "ext": "md",
+   "size": 29
+  },
+  {
+   "path": "research/ai2_OLMoE-1B-7B-0125-Instruct.md",
+   "name": "ai2_OLMoE-1B-7B-0125-Instruct.md",
+   "ext": "md",
+   "size": 8826
+  },
+  {
+   "path": "research/ai2_OLMoE-1B-7B-0924-Instruct.md",
+   "name": "ai2_OLMoE-1B-7B-0924-Instruct.md",
+   "ext": "md",
+   "size": 6550
+  },
+  {
+   "path": "research/ai2_OLMoE-1B-7B.md",
+   "name": "ai2_OLMoE-1B-7B.md",
+   "ext": "md",
+   "size": 29
+  },
+  {
+   "path": "research/ai2_Olmo-3-1025-7B.md",
+   "name": "ai2_Olmo-3-1025-7B.md",
+   "ext": "md",
+   "size": 12222
+  },
+  {
+   "path": "research/ai2_Olmo-3-1125-32B.md",
+   "name": "ai2_Olmo-3-1125-32B.md",
+   "ext": "md",
+   "size": 14957
+  },
+  {
+   "path": "research/ai2_Olmo-3-32B-Think.md",
+   "name": "ai2_Olmo-3-32B-Think.md",
+   "ext": "md",
+   "size": 11918
+  },
+  {
+   "path": "research/ai2_Olmo-3-7B-Instruct.md",
+   "name": "ai2_Olmo-3-7B-Instruct.md",
+   "ext": "md",
+   "size": 12466
+  },
+  {
+   "path": "research/ai2_Olmo-3-7B-Think.md",
+   "name": "ai2_Olmo-3-7B-Think.md",
+   "ext": "md",
+   "size": 11835
+  },
+  {
+   "path": "research/ai2_Olmo-3.1-32B-Instruct.md",
+   "name": "ai2_Olmo-3.1-32B-Instruct.md",
+   "ext": "md",
+   "size": 11267
+  },
+  {
+   "path": "research/allenai_OLMo_models.json",
+   "name": "allenai_OLMo_models.json",
+   "ext": "json",
+   "size": 47247
+  },
+  {
+   "path": "research/allenai_models.json",
+   "name": "allenai_models.json",
+   "ext": "json",
+   "size": 27151
+  },
+  {
+   "path": "research/allenai_olmo_models.json",
+   "name": "allenai_olmo_models.json",
+   "ext": "json",
+   "size": 47247
+  },
+  {
+   "path": "research/arcprize-results.html",
+   "name": "arcprize-results.html",
+   "ext": "html",
+   "size": 53564
+  },
+  {
+   "path": "research/bfcl-index.js",
+   "name": "bfcl-index.js",
+   "ext": "js",
+   "size": 9379
+  },
+  {
+   "path": "research/bfcl-leaderboard.html",
+   "name": "bfcl-leaderboard.html",
+   "ext": "html",
+   "size": 16207
+  },
+  {
+   "path": "research/bfcl-leaderboard2.html",
+   "name": "bfcl-leaderboard2.html",
+   "ext": "html",
+   "size": 9379
+  },
+  {
+   "path": "research/card-gemma-2-27b.txt",
+   "name": "card-gemma-2-27b.txt",
+   "ext": "txt",
+   "size": 30010
+  },
+  {
+   "path": "research/card-gemma-3-27b-it.txt",
+   "name": "card-gemma-3-27b-it.txt",
+   "ext": "txt",
+   "size": 40007
+  },
+  {
+   "path": "research/card-gemma-3-27b.txt",
+   "name": "card-gemma-3-27b.txt",
+   "ext": "txt",
+   "size": 42778
+  },
+  {
+   "path": "research/card-gemma-3-4b-it.txt",
+   "name": "card-gemma-3-4b-it.txt",
+   "ext": "txt",
+   "size": 40007
+  },
+  {
+   "path": "research/card-gemma-3n-E4B.txt",
+   "name": "card-gemma-3n-E4B.txt",
+   "ext": "txt",
+   "size": 34069
+  },
+  {
+   "path": "research/deepseek.json",
+   "name": "deepseek.json",
+   "ext": "json",
+   "size": 5183
+  },
+  {
+   "path": "research/ds-news-index.html",
+   "name": "ds-news-index.html",
+   "ext": "html",
+   "size": 45020
+  },
+  {
+   "path": "research/ds-news0324.html",
+   "name": "ds-news0324.html",
+   "ext": "html",
+   "size": 45020
+  },
+  {
+   "path": "research/ds-news0821.html",
+   "name": "ds-news0821.html",
+   "ext": "html",
+   "size": 45020
+  },
+  {
+   "path": "research/ds-news1201.html",
+   "name": "ds-news1201.html",
+   "ext": "html",
+   "size": 45020
+  },
+  {
+   "path": "research/ds-news1226.html",
+   "name": "ds-news1226.html",
+   "ext": "html",
+   "size": 24241
+  },
+  {
+   "path": "research/frankx-gemma.html",
+   "name": "frankx-gemma.html",
+   "ext": "html",
+   "size": 3149351
+  },
+  {
+   "path": "research/frankx-gemma.txt",
+   "name": "frankx-gemma.txt",
+   "ext": "txt",
+   "size": 19744
+  },
+  {
+   "path": "research/gemma-2-27b-it-README.md",
+   "name": "gemma-2-27b-it-README.md",
+   "ext": "md",
+   "size": 129
+  },
+  {
+   "path": "research/gemma-3-27b-it-README.md",
+   "name": "gemma-3-27b-it-README.md",
+   "ext": "md",
+   "size": 129
+  },
+  {
+   "path": "research/gemma-3-4b-it-README.md",
+   "name": "gemma-3-4b-it-README.md",
+   "ext": "md",
+   "size": 128
+  },
+  {
+   "path": "research/gemma-3n-E4B-it-README.md",
+   "name": "gemma-3n-E4B-it-README.md",
+   "ext": "md",
+   "size": 130
+  },
+  {
+   "path": "research/gemma-4-12B-it-README.md",
+   "name": "gemma-4-12B-it-README.md",
+   "ext": "md",
+   "size": 28484
+  },
+  {
+   "path": "research/gemma-4-26B-A4B-it-README.md",
+   "name": "gemma-4-26B-A4B-it-README.md",
+   "ext": "md",
+   "size": 27979
+  },
+  {
+   "path": "research/gemma-4-31B-it-README.md",
+   "name": "gemma-4-31B-it-README.md",
+   "ext": "md",
+   "size": 27963
+  },
+  {
+   "path": "research/gemma-4-E2B-it-README.md",
+   "name": "gemma-4-E2B-it-README.md",
+   "ext": "md",
+   "size": 27955
+  },
+  {
+   "path": "research/gemma-4-E4B-it-README.md",
+   "name": "gemma-4-E4B-it-README.md",
+   "ext": "md",
+   "size": 27956
+  },
+  {
+   "path": "research/gemma2-arxiv.html",
+   "name": "gemma2-arxiv.html",
+   "ext": "html",
+   "size": 74571
+  },
+  {
+   "path": "research/gemma2-report.html",
+   "name": "gemma2-report.html",
+   "ext": "html",
+   "size": 288640
+  },
+  {
+   "path": "research/gemma2-report.txt",
+   "name": "gemma2-report.txt",
+   "ext": "txt",
+   "size": 69629
+  },
+  {
+   "path": "research/gemma3-report.html",
+   "name": "gemma3-report.html",
+   "ext": "html",
+   "size": 371459
+  },
+  {
+   "path": "research/gemma3n-devguide.html",
+   "name": "gemma3n-devguide.html",
+   "ext": "html",
+   "size": 55628
+  },
+  {
+   "path": "research/gemma3n-devguide.txt",
+   "name": "gemma3n-devguide.txt",
+   "ext": "txt",
+   "size": 13142
+  },
+  {
+   "path": "research/gemma3n-hf-blog.html",
+   "name": "gemma3n-hf-blog.html",
+   "ext": "html",
+   "size": 272208
+  },
+  {
+   "path": "research/gemma4-hf-blog.html",
+   "name": "gemma4-hf-blog.html",
+   "ext": "html",
+   "size": 686985
+  },
+  {
+   "path": "research/gemma4-report-abs.html",
+   "name": "gemma4-report-abs.html",
+   "ext": "html",
+   "size": 95188
+  },
+  {
+   "path": "research/gh-index.md",
+   "name": "gh-index.md",
+   "ext": "md",
+   "size": 14
+  },
+  {
+   "path": "research/gh-news-listing.json",
+   "name": "gh-news-listing.json",
+   "ext": "json",
+   "size": 141
+  },
+  {
+   "path": "research/gh-news0324.md",
+   "name": "gh-news0324.md",
+   "ext": "md",
+   "size": 14
+  },
+  {
+   "path": "research/gh-news0821.md",
+   "name": "gh-news0821.md",
+   "ext": "md",
+   "size": 14
+  },
+  {
+   "path": "research/gh-news0929.md",
+   "name": "gh-news0929.md",
+   "ext": "md",
+   "size": 14
+  },
+  {
+   "path": "research/gh-news1201.md",
+   "name": "gh-news1201.md",
+   "ext": "md",
+   "size": 14
+  },
+  {
+   "path": "research/gh-news1226.md",
+   "name": "gh-news1226.md",
+   "ext": "md",
+   "size": 14
+  },
+  {
+   "path": "research/gh-repos.json",
+   "name": "gh-repos.json",
+   "ext": "json",
+   "size": 221034
+  },
+  {
+   "path": "research/google.json",
+   "name": "google.json",
+   "ext": "json",
+   "size": 5041
+  },
+  {
+   "path": "research/hf-deepseek-org.json",
+   "name": "hf-deepseek-org.json",
+   "ext": "json",
+   "size": 44275
+  },
+  {
+   "path": "research/hf-org-2.json",
+   "name": "hf-org-2.json",
+   "ext": "json",
+   "size": 44275
+  },
+  {
+   "path": "research/hf-r2-search.json",
+   "name": "hf-r2-search.json",
+   "ext": "json",
+   "size": 3186
+  },
+  {
+   "path": "research/k20905_meta.json",
+   "name": "k20905_meta.json",
+   "ext": "json",
+   "size": 10261
+  },
+  {
+   "path": "research/k25_meta.json",
+   "name": "k25_meta.json",
+   "ext": "json",
+   "size": 12924
+  },
+  {
+   "path": "research/k26_meta.json",
+   "name": "k26_meta.json",
+   "ext": "json",
+   "size": 13575
+  },
+  {
+   "path": "research/k2_meta.json",
+   "name": "k2_meta.json",
+   "ext": "json",
+   "size": 10205
+  },
+  {
+   "path": "research/k2_readme.md",
+   "name": "k2_readme.md",
+   "ext": "md",
+   "size": 25517
+  },
+  {
+   "path": "research/k2blog.html",
+   "name": "k2blog.html",
+   "ext": "html",
+   "size": 1316
+  },
+  {
+   "path": "research/k2t_meta.json",
+   "name": "k2t_meta.json",
+   "ext": "json",
+   "size": 12065
+  },
+  {
+   "path": "research/k2tblog.html",
+   "name": "k2tblog.html",
+   "ext": "html",
+   "size": 1135
+  },
+  {
+   "path": "research/k3_meta.json",
+   "name": "k3_meta.json",
+   "ext": "json",
+   "size": 8585
+  },
+  {
+   "path": "research/k3blog.html",
+   "name": "k3blog.html",
+   "ext": "html",
+   "size": 304317
+  },
+  {
+   "path": "research/llmstats-gemma3n.html",
+   "name": "llmstats-gemma3n.html",
+   "ext": "html",
+   "size": 121239
+  },
+  {
+   "path": "research/meta.json",
+   "name": "meta.json",
+   "ext": "json",
+   "size": 3670
+  },
+  {
+   "path": "research/meta_OLMo-2-1124-13B-Instruct.json",
+   "name": "meta_OLMo-2-1124-13B-Instruct.json",
+   "ext": "json",
+   "size": 3278
+  },
+  {
+   "path": "research/meta_OLMo-2-1124-13B.json",
+   "name": "meta_OLMo-2-1124-13B.json",
+   "ext": "json",
+   "size": 1930
+  },
+  {
+   "path": "research/meta_OLMo-2-1124-7B-Instruct.json",
+   "name": "meta_OLMo-2-1124-7B-Instruct.json",
+   "ext": "json",
+   "size": 2775
+  },
+  {
+   "path": "research/meta_OLMo-2-13B.json",
+   "name": "meta_OLMo-2-13B.json",
+   "ext": "json",
+   "size": 41
+  },
+  {
+   "path": "research/meta_OLMo-3-32B.json",
+   "name": "meta_OLMo-3-32B.json",
+   "ext": "json",
+   "size": 41
+  },
+  {
+   "path": "research/meta_OLMo-3-7B.json",
+   "name": "meta_OLMo-3-7B.json",
+   "ext": "json",
+   "size": 41
+  },
+  {
+   "path": "research/meta_OLMoE-1B-7B-0125-Instruct.json",
+   "name": "meta_OLMoE-1B-7B-0125-Instruct.json",
+   "ext": "json",
+   "size": 2585
+  },
+  {
+   "path": "research/meta_OLMoE-1B-7B-0924-Instruct.json",
+   "name": "meta_OLMoE-1B-7B-0924-Instruct.json",
+   "ext": "json",
+   "size": 2642
+  },
+  {
+   "path": "research/meta_OLMoE-1B-7B.json",
+   "name": "meta_OLMoE-1B-7B.json",
+   "ext": "json",
+   "size": 41
+  },
+  {
+   "path": "research/meta_Olmo-3-1025-7B.json",
+   "name": "meta_Olmo-3-1025-7B.json",
+   "ext": "json",
+   "size": 1982
+  },
+  {
+   "path": "research/meta_Olmo-3-1125-32B.json",
+   "name": "meta_Olmo-3-1125-32B.json",
+   "ext": "json",
+   "size": 9098
+  },
+  {
+   "path": "research/meta_Olmo-3-32B-Think.json",
+   "name": "meta_Olmo-3-32B-Think.json",
+   "ext": "json",
+   "size": 4267
+  },
+  {
+   "path": "research/meta_Olmo-3-7B-Instruct.json",
+   "name": "meta_Olmo-3-7B-Instruct.json",
+   "ext": "json",
+   "size": 6659
+  },
+  {
+   "path": "research/meta_Olmo-3-7B-Think.json",
+   "name": "meta_Olmo-3-7B-Think.json",
+   "ext": "json",
+   "size": 3928
+  },
+  {
+   "path": "research/meta_Olmo-3.1-32B-Instruct.json",
+   "name": "meta_Olmo-3.1-32B-Instruct.json",
+   "ext": "json",
+   "size": 8368
+  },
+  {
+   "path": "research/mistral.json",
+   "name": "mistral.json",
+   "ext": "json",
+   "size": 5259
+  },
+  {
+   "path": "research/moonshot.json",
+   "name": "moonshot.json",
+   "ext": "json",
+   "size": 3820
+  },
+  {
+   "path": "research/moonshotai_models.json",
+   "name": "moonshotai_models.json",
+   "ext": "json",
+   "size": 9237
+  },
+  {
+   "path": "research/olmo2_blog.html",
+   "name": "olmo2_blog.html",
+   "ext": "html",
+   "size": 1214700
+  },
+  {
+   "path": "research/olmoe_blog.html",
+   "name": "olmoe_blog.html",
+   "ext": "html",
+   "size": 375026
+  },
+  {
+   "path": "research/openai.json",
+   "name": "openai.json",
+   "ext": "json",
+   "size": 2988
+  },
+  {
+   "path": "research/page-gemma-2-27b-it.html",
+   "name": "page-gemma-2-27b-it.html",
+   "ext": "html",
+   "size": 374087
+  },
+  {
+   "path": "research/page-gemma-2-27b-it.txt",
+   "name": "page-gemma-2-27b-it.txt",
+   "ext": "txt",
+   "size": 61854
+  },
+  {
+   "path": "research/page-gemma-3-27b-it.html",
+   "name": "page-gemma-3-27b-it.html",
+   "ext": "html",
+   "size": 417920
+  },
+  {
+   "path": "research/page-gemma-3-27b-it.txt",
+   "name": "page-gemma-3-27b-it.txt",
+   "ext": "txt",
+   "size": 74134
+  },
+  {
+   "path": "research/page-gemma-3-4b-it.html",
+   "name": "page-gemma-3-4b-it.html",
+   "ext": "html",
+   "size": 415025
+  },
+  {
+   "path": "research/page-gemma-3-4b-it.txt",
+   "name": "page-gemma-3-4b-it.txt",
+   "ext": "txt",
+   "size": 72299
+  },
+  {
+   "path": "research/page-gemma-3n-E4B-it.html",
+   "name": "page-gemma-3n-E4B-it.html",
+   "ext": "html",
+   "size": 354201
+  },
+  {
+   "path": "research/page-gemma-3n-E4B-it.txt",
+   "name": "page-gemma-3n-E4B-it.txt",
+   "ext": "txt",
+   "size": 57948
+  },
+  {
+   "path": "research/qwen.json",
+   "name": "qwen.json",
+   "ext": "json",
+   "size": 5853
+  },
+  {
+   "path": "research/v32-paper.html",
+   "name": "v32-paper.html",
+   "ext": "html",
+   "size": 262849
+  },
+  {
+   "path": "research/yi.json",
+   "name": "yi.json",
+   "ext": "json",
+   "size": 3901
+  },
+  {
+   "path": "research/yi15_blog.html",
+   "name": "yi15_blog.html",
+   "ext": "html",
+   "size": 9115
+  },
+  {
+   "path": "research/yi15_github.md",
+   "name": "yi15_github.md",
+   "ext": "md",
+   "size": 7370
+  },
+  {
+   "path": "research/yi_Yi-1.5-34B-Chat.md",
+   "name": "yi_Yi-1.5-34B-Chat.md",
+   "ext": "md",
+   "size": 5779
+  },
+  {
+   "path": "research/yi_Yi-1.5-6B-Chat.md",
+   "name": "yi_Yi-1.5-6B-Chat.md",
+   "ext": "md",
+   "size": 5779
+  },
+  {
+   "path": "research/yi_Yi-1.5-9B-Chat.md",
+   "name": "yi_Yi-1.5-9B-Chat.md",
+   "ext": "md",
+   "size": 5779
+  },
+  {
+   "path": "research/yi_Yi-Coder-9B.md",
+   "name": "yi_Yi-Coder-9B.md",
+   "ext": "md",
+   "size": 5151
+  },
+  {
+   "path": "research/yi_coder_github.md",
+   "name": "yi_coder_github.md",
+   "ext": "md",
+   "size": 13120
+  },
+  {
+   "path": "research/zhipu.json",
+   "name": "zhipu.json",
+   "ext": "json",
+   "size": 5571
+  }
+ ]
+}

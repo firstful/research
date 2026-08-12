@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Kimi-K2",
+    "family": "Moonshot",
+    "released": "2025-07-11",
+    "params_b": 1000.0,
+    "active_params_b": 32.0,
+    "arch": "moe",
+    "quant": "Q4_K_M",
+    "model_gb": 620.0,
+    "kv_gb": 90.0,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": 81.1,
+      "GPQA": 75.1,
+      "MATH-500": 97.4,
+      "IFEval": 89.8,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://huggingface.co/moonshotai/Kimi-K2-Instruct",
+    "notes": "Official HF model card (Kimi K2 Instruct, 0711). Scores: MMLU-Pro EM 81.1, GPQA-Diamond Avg@8 75.1, MATH-500 97.4, IFEval prompt-strict 89.8, MMLU 89.5. MoE 1T total / 32B active, 61 layers, 384 experts/8 active, 128K ctx, Modified MIT license. Released 2025-07-11 (HF repo createdAt). No ARC-AGI or BFCL officially reported (null). Superseded by Kimi-K2-Instruct-0905 (HF created 2025-09-03, 256K ctx; same 1T/32B arch; MMLU-Pro 81.9 / GPQA 74.2 per K2-Thinking card comparison table)."
+  },
+  {
+    "name": "Kimi-K2-Thinking",
+    "family": "Moonshot",
+    "released": "2025-11-06",
+    "params_b": 1000.0,
+    "active_params_b": 32.0,
+    "arch": "moe",
+    "quant": "Q4_K_M",
+    "model_gb": 620.0,
+    "kv_gb": 90.0,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": 84.6,
+      "GPQA": 84.5,
+      "MATH-500": null,
+      "IFEval": null,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://huggingface.co/moonshotai/Kimi-K2-Thinking",
+    "notes": "Official HF model card, no-tools setting: MMLU-Pro 84.6, GPQA 84.5, HLE 23.9, AIME25 94.5, SWE-bench Verified 71.3 (w/ tools). MoE 1T total / 32B active, 256K ctx, native INT4 quantization via QAT (lossless), Modified MIT license. Released 2025-11-06 (announced Nov 6, 2025 per kimi.com blog and news; HF repo created 2025-11-04). No MATH-500/IFEval/ARC-AGI/BFCL in official card (null)."
+  },
+  {
+    "name": "Kimi-K2.5",
+    "family": "Moonshot",
+    "released": "2026-01-27",
+    "params_b": 1000.0,
+    "active_params_b": 32.0,
+    "arch": "moe",
+    "quant": "Q4_K_M",
+    "model_gb": 620.0,
+    "kv_gb": 90.0,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": 87.1,
+      "GPQA": 87.6,
+      "MATH-500": null,
+      "IFEval": null,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://huggingface.co/moonshotai/Kimi-K2.5",
+    "notes": "Official HF model card: MMLU-Pro 87.1, GPQA-Diamond Avg@8 87.6, HLE-Full 30.1 (50.2 w/ tools). Native multimodal agentic model (MoonViT 400M vision encoder) built via continual pretraining on ~15T mixed visual+text tokens atop Kimi-K2-Base; MoE 1T total / 32B active, 256K ctx, Modified MIT license; arXiv 2602.02276. Officially released 2026-01-27 (kimi.com model page). No MATH-500/IFEval/ARC-AGI/BFCL in official card (null)."
+  },
+  {
+    "name": "Kimi-K3",
+    "family": "Moonshot",
+    "released": "2026-07-27",
+    "params_b": 2800.0,
+    "active_params_b": 104.0,
+    "arch": "moe",
+    "quant": "Q4_K_M",
+    "model_gb": 1736.0,
+    "kv_gb": 252.0,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": null,
+      "GPQA": 93.5,
+      "MATH-500": null,
+      "IFEval": null,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://huggingface.co/moonshotai/Kimi-K3",
+    "notes": "Official HF model card: GPQA Diamond 93.5 (max effort), HLE-Full 43.5/56.0 (no tools/w tools), DeepSWE 67.5, BrowseComp 91.2, Terminal-Bench 2.1 88.3. World's first open 3T-class model: 2.8T total / 104B active MoE (896 experts, 16 active), 93 layers, KDA + Attention Residuals, 1M-token ctx, native vision (MoonViT-V2, image-text-to-text), MXFP4 weights / MXFP8 activations via QAT. Custom Kimi K3 License (not MIT). Open weights released 2026-07-27; API served since 2026-07-16 (kimi.com/blog/kimi-k3). No MMLU-Pro/MATH-500/IFEval/ARC-AGI/BFCL in official card (null)."
+  }
+]

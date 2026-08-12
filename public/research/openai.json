@@ -1,0 +1,46 @@
+[
+  {
+    "name": "gpt-oss-120b",
+    "family": "OpenAI",
+    "released": "2025-08-05",
+    "params_b": 117.0,
+    "active_params_b": 5.1,
+    "arch": "moe",
+    "quant": "Q4_K_M",
+    "model_gb": 72.54,
+    "kv_gb": 10.53,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": 80.8,
+      "GPQA": 80.1,
+      "MATH-500": null,
+      "IFEval": null,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://arxiv.org/abs/2508.10925",
+    "notes": "GPQA=80.1 is official (arXiv 2508.10925 Table 3 & OpenAI model card PDF cdn.openai.com/pdf/419b6906-9da6-406c-a19d-1bb078ac7637/oai_gpt-oss_model_card.pdf): GPQA Diamond, no tools, high reasoning effort. MMLU-Pro=80.8 is NOT reported by OpenAI (official suite is AIME/GPQA/HLE/MMLU/MMMLU/SWE-bench/Tau-Bench/HealthBench/Codeforces/Aider); third-party BenchmarkList run 2026-06-10 (benchmarklist.com/models/openai-gpt-oss-120b), corroborated by evals.report 'Verified' 80.8% and llm-stats 0.807; Artificial Analysis reports 77.5 (different effort/protocol). MATH-500/IFEval/ARC-AGI/BFCL: no official or credible third-party score found (BFCL v3/v4 leaderboards do not list gpt-oss; Vellum ARC-AGI-2 table does not list it). Official total params 117B (name '120b' is nominal); active 5.1B; 36 layers, 128 experts/4 active, 128k ctx, Apache-2.0. Native precision is MXFP4 (fits 1x80GB GPU); 'Q4_K_M'/'model_gb'/'kv_gb' follow the landscape heuristic per schema. NOTE: task's arXiv ref 2508.10914 is an unrelated paper; correct model-card arXiv is 2508.10925."
+  },
+  {
+    "name": "gpt-oss-20b",
+    "family": "OpenAI",
+    "released": "2025-08-05",
+    "params_b": 21.0,
+    "active_params_b": 3.6,
+    "arch": "moe",
+    "quant": "Q4_K_M",
+    "model_gb": 13.02,
+    "kv_gb": 1.89,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": 74.8,
+      "GPQA": 71.5,
+      "MATH-500": null,
+      "IFEval": null,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://arxiv.org/abs/2508.10925",
+    "notes": "GPQA=71.5 is official (arXiv 2508.10925 Table 3 & OpenAI model card PDF cdn.openai.com/pdf/419b6906-9da6-406c-a19d-1bb078ac7637/oai_gpt-oss_model_card.pdf): GPQA Diamond, no tools, high reasoning effort; llm-stats lists 0.71 citing openai.com. MMLU-Pro=74.8 is NOT reported by OpenAI; third-party BenchmarkList run 2026-06-10 (benchmarklist.com/models/openai-gpt-oss-20b), same runner/protocol as the 120b row; Artificial Analysis (via pricepertoken) reports 71.8 at a different effort - discrepancy noted. MATH-500: no official score; only an anonymous community LinkedIn run (~96%, medium, single run) - not used. IFEval/ARC-AGI/BFCL: no official or credible third-party score found (awesomeagents.ai lists IFEval 0.695 for 120b only, provenance unverifiable). Official total params 21B, active 3.6B; 24 layers, 32 experts/4 active, 128k ctx, Apache-2.0. Native precision MXFP4 (fits ~16GB). NOTE: task's arXiv ref 2508.10914 is an unrelated paper; correct model-card arXiv is 2508.10925."
+  }
+]

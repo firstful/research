@@ -1,0 +1,156 @@
+[
+  {
+    "name": "DeepSeek-V3-0324",
+    "family": "DeepSeek",
+    "released": "2025-03-24",
+    "params_b": 671.0,
+    "active_params_b": 37.0,
+    "arch": "moe",
+    "quant": "Q4_K_M",
+    "model_gb": 416.02,
+    "kv_gb": 60.39,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": 81.2,
+      "GPQA": 68.4,
+      "MATH-500": null,
+      "IFEval": null,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324",
+    "notes": "Official HF model card: MMLU-Pro 75.9->81.2, GPQA 59.1->68.4. Release date = HF repo createdAt. MATH-500/IFEval/ARC-AGI/BFCL not reported in official sources -> null."
+  },
+  {
+    "name": "DeepSeek-R1-0528",
+    "family": "DeepSeek",
+    "released": "2025-05-28",
+    "params_b": 671.0,
+    "active_params_b": 37.0,
+    "arch": "moe",
+    "quant": "Q4_K_M",
+    "model_gb": 416.02,
+    "kv_gb": 60.39,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": 85.0,
+      "GPQA": 81.0,
+      "MATH-500": null,
+      "IFEval": null,
+      "ARC-AGI": null,
+      "BFCL": 37.0
+    },
+    "source": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528",
+    "notes": "Official HF model card (MMLU-Pro EM 85.0, GPQA-Diamond 81.0). BFCL 37.0 = BFCL_v3_MultiTurn Acc from official card (note: variant metric). MATH-500/IFEval/ARC-AGI not reported officially -> null. Release date = HF repo createdAt."
+  },
+  {
+    "name": "DeepSeek-V3.1",
+    "family": "DeepSeek",
+    "released": "2025-08-21",
+    "params_b": 671.0,
+    "active_params_b": 37.0,
+    "arch": "moe",
+    "quant": "Q4_K_M",
+    "model_gb": 416.02,
+    "kv_gb": 60.39,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": 84.8,
+      "GPQA": 80.1,
+      "MATH-500": null,
+      "IFEval": null,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1",
+    "notes": "Official HF model card, THINKING-mode values (V3.1-Think): MMLU-Pro 84.8, GPQA-Diamond 80.1. Non-thinking mode: MMLU-Pro 83.7, GPQA 74.9. 671B/37B per card table. MATH-500/IFEval/ARC-AGI/BFCL not reported -> null. Release date = HF repo createdAt (Base on 08-19, instruct 08-21)."
+  },
+  {
+    "name": "DeepSeek-V3.2-Exp",
+    "family": "DeepSeek",
+    "released": "2025-09-29",
+    "params_b": 671.0,
+    "active_params_b": 37.0,
+    "arch": "moe",
+    "quant": "Q4_K_M",
+    "model_gb": 416.02,
+    "kv_gb": 60.39,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": 85.0,
+      "GPQA": 79.9,
+      "MATH-500": null,
+      "IFEval": null,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2-Exp",
+    "notes": "Official HF model card, reasoning-mode table: MMLU-Pro 85.0, GPQA-Diamond 79.9. Experimental release (DeepSeek Sparse Attention preview) - the 2025-09/10 V3.2 milestone. 671B config per card. Other benchmarks not reported -> null."
+  },
+  {
+    "name": "DeepSeek-V3.2",
+    "family": "DeepSeek",
+    "released": "2025-12-01",
+    "params_b": 671.0,
+    "active_params_b": 37.0,
+    "arch": "moe",
+    "quant": "Q4_K_M",
+    "model_gb": 416.02,
+    "kv_gb": 60.39,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": 85.0,
+      "GPQA": 82.4,
+      "MATH-500": null,
+      "IFEval": null,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://arxiv.org/abs/2512.02556",
+    "notes": "Official arXiv tech report (2512.02556, Table 2, Thinking): MMLU-Pro 85.0, GPQA Diamond 82.4. No MATH-500/IFEval/BFCL/ARC-AGI in paper or HF card -> null. Release date = HF repo createdAt 2025-12-01 (full release; Exp was 2025-09-29)."
+  },
+  {
+    "name": "DeepSeek-V4-Flash",
+    "family": "DeepSeek",
+    "released": "2026-04-22",
+    "params_b": 284.0,
+    "active_params_b": 13.0,
+    "arch": "moe",
+    "quant": "Q4_K_M",
+    "model_gb": 176.08,
+    "kv_gb": 25.56,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": 86.4,
+      "GPQA": 88.1,
+      "MATH-500": null,
+      "IFEval": null,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash",
+    "notes": "Official HF card (V4 preview, 2026-04-22): 284B/13B, 1M ctx. MMLU-Pro 86.4 = High reasoning mode, GPQA 88.1 = Max mode (same headline convention as DeepSeek-V4-Flash-0731 row in DB). Preview superseded by V4-Flash-0731 (2026-07-31, already in DB). ARC-AGI: only V4-Flash-0731 verified on arcprize.org (89.0) -> null here."
+  },
+  {
+    "name": "DeepSeek-V4-Pro",
+    "family": "DeepSeek",
+    "released": "2026-04-22",
+    "params_b": 1600.0,
+    "active_params_b": 49.0,
+    "arch": "moe",
+    "quant": "Q4_K_M",
+    "model_gb": 992.0,
+    "kv_gb": 144.0,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": 87.1,
+      "GPQA": 90.1,
+      "MATH-500": null,
+      "IFEval": null,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro",
+    "notes": "Official HF card (V4 preview, 2026-04-22): 1.6T params/49B active, 1M ctx, MIT. MMLU-Pro 87.1 = High reasoning mode, GPQA 90.1 = Max mode (headline convention matching V4-Flash-0731 DB row). No official MATH-500/IFEval/BFCL; not on arcprize.org results -> null."
+  }
+]

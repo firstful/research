@@ -1,0 +1,951 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+        <meta charset="utf-8" />
+        
+        <title>
+            
+            Introducing Gemma 3n: The developer guide
+            
+            
+            - Google Developers Blog
+            
+        </title>
+        <meta property="og:title" content="Introducing Gemma 3n: The developer guide- Google Developers Blog" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+	<meta name="description" content="Learn how to build with Gemma 3n, a mobile-first architecture, MatFormer technology, Per-Layer Embeddings, and new audio and vision encoders." />
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="Google for Developers Blog - News about Web, Mobile, AI and Cloud" property="twitter:title"/>
+  <meta property="og:title" content="Introducing Gemma 3n: The developer guide" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Google for Developers Blog",
+      "item": "https://developers.googleblog.com/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Introducing Gemma 3n: The developer guide",
+      "item": "https://developers.googleblog.com/en/introducing-gemma-3n-developer-guide/"
+    }]
+  }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Introducing Gemma 3n: The developer guide",
+      "description": "The Gemma 3n model has been fully released, building on the success of previous Gemma models and bringing advanced on-device multimodal capabilities to edge devices with unprecedented performance. Explore Gemma 3n&#x27;s innovations, including its mobile-first architecture, MatFormer technology, Per-Layer Embeddings, KV Cache Sharing, and new audio and MobileNet-V5 vision encoders, and how developers can start building with it today.",
+      "image": "https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/gemma-3n-meta.2e16d0ba.fill-800x400.png",
+      "datePublished": "2025-06-26",
+      "author": [
+        
+        
+          { "@type": "Person", "name": "Omar Sanseviero", "url": "/en/search/?author=Omar+Sanseviero" },
+        
+          { "@type": "Person", "name": "Ian Ballantyne", "url": "/en/search/?author=Ian+Ballantyne" }
+        
+        
+      ]
+    }
+  </script>
+  
+  <meta content="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/gemma-3n-meta.2e16d0ba.fill-1200x600.png" property="og:image"/>
+  
+
+
+        
+        
+
+        <!-- Google Tag Manager -->
+        <script type="text/javascript" nonce="SOKG9OfQK93woV4KSWLMUw==" src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260731-000318/js/analytics.js"></script>
+        <!-- End Google Tag Manager -->
+
+        
+        <link href="//www.gstatic.com/glue/v27_1/glue.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260731-000318/css/dgc_blog.css">
+        <link rel="icon" href="https://storage.googleapis.com/gweb-developer-goog-blog-assets/meta/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="https://storage.googleapis.com/gweb-developer-goog-blog-assets/meta/apple-touch-icon.png">
+
+        
+				<link rel="preconnect" href="https://fonts.googleapis.com">
+				<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+				<link rel="preload" href="https://fonts.googleapis.com/css2?family=Product+Sans&family=Google+Sans+Display:ital@0;1&family=Google+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Google+Sans+Text:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" as="style">
+				<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Product+Sans&family=Google+Sans+Display:ital@0;1&family=Google+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Google+Sans+Text:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap">
+        <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&amp;family=Google+Sans+Flex:opsz,wght@6..144,1..1000&amp;display=swap" rel="stylesheet" data-page-link="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap">
+
+        
+        <link href="https://www.gstatic.com/glue/cookienotificationbar/cookienotificationbar.min.css" rel="stylesheet">
+
+        
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260731-000318/css/blog_detail.css"
+  />
+  <link type="text/css" href="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260731-000318/css/prism.css" rel="stylesheet" />
+
+    </head>
+
+    <body id="main-content" class="glue-body ">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVTLDSL "
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+
+        
+
+				
+        
+
+<!-- HTML -->
+<header class="dgc-header">
+  <div class="dgc-header-inner">
+    <button class="hamburger" aria-haspopup="true" aria-expanded="false" aria-label="Open Menu">
+      <svg role="presentation" aria-hidden="true" class="glue-icon">
+        <use href="/glue-icon/#menu"></use>
+      </svg>
+    </button>
+    <div class="product-name-wrapper">
+      <a href="https://developers.google.com/" class="site-logo-link" data-label="Site logo">
+        <img src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260731-000318/images/g-dev.svg" class="site-logo" alt="Google for Developers">
+      </a>
+    </div>
+    <div class="desktop-nav-wrapper">
+      <div class="upper-tabs-wrapper">
+        <div class="upper-tabs">
+          <nav class="tabs" aria-label="Upper Tabs">
+            <div class="tab">
+              <a
+                href="//developers.google.com/community"
+                class="top-nav-title">
+                Community/Events
+              </a>
+            </div>
+            <div class="tab">
+              <a
+                href="//developers.google.com/solutions/catalog"
+                class="top-nav-title">
+                Learn
+              </a>
+            </div>
+            <div class="tab">
+              <a
+                href="//developers.googleblog.com"
+                class="top-nav-title">
+                Blog
+              </a>
+            </div>
+            <div class="tab">
+              <a
+                href="https://www.youtube.com/user/GoogleDevelopers"
+                class="top-nav-title">
+                YouTube
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dgc-header-search">
+    <div class="search-wrapper glue-page">
+      <div class="glue-grid">
+        <form id="search-form"  action="/en/search/" method="get" class="search-content glue-grid__col glue-grid__col--span-4-sm glue-grid__col--span-9-md glue-grid__col--span-7-lg">
+          <div class="search-input-wrapper">
+            <svg role="presentation" aria-hidden="true" class="glue-icon search-icon">
+              <use href="/glue-icon/#search"></use>
+            </svg>
+            <input
+              type="text"
+              name="query"
+              
+              placeholder="Search all articles..."
+              aria-label="Search"
+              class="search-input-field"
+            />
+          </div>
+          <button class="glue-button glue-button--high-emphasis">
+            Search
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-drawer" top-level-nav>
+  <nav class="nav-content" aria-label="Side menu">
+    <div class="mobile-header">
+      <button class="nav-close-btn nav-btn" aria-label="Close navigation">
+        <svg role="presentation" aria-hidden="true" class="glue-icon">
+          <use href="/glue-icon/#close"></use>
+        </svg>
+      </button>
+      <button class="nav-back-btn nav-btn hidden" aria-label="Back to Menu">
+        <svg role="presentation" aria-hidden="true" class="glue-icon">
+          <use href="/glue-icon/#arrow-back"></use>
+        </svg>
+      </button>
+      <div class="product-name-wrapper">
+        <a href="https://developers.google.com/" class="site-logo-link" data-label="Site logo">
+          <img src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260731-000318/images/g-dev.svg" class="site-logo" alt="Google for Developers">
+        </a>
+      </div>
+    </div>
+    <div class="nav-wrapper">
+      <div class="mobile-nav-top">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="//developers.google.com/community" class="nav-title" data-label="Tab: Community/Events">
+              <span class="nav-text" tooltip="">
+                Community/Events
+             </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="//developers.google.com/solutions/catalog" class="nav-title" data-label="Tab: Learn">
+              <span class="nav-text" tooltip="">
+                Learn
+             </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="//developers.googleblog.com" class="nav-title" data-label="Tab: Blog">
+              <span class="nav-text" tooltip="">
+                Blog
+             </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.youtube.com/user/GoogleDevelopers" class="nav-title" data-label="Tab: YouTube">
+              <span class="nav-text" tooltip="">
+                YouTube
+             </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div class="backdrop"></div>
+
+        
+  <div class="blog-detail-container">
+
+    
+      <section class="tags-container glue-page glue-spacer-5-top">
+        <div class="glue-eyebrow"><a href="/en/search/?product_categories=Gemma">Gemma</a></div>
+      </section>
+    
+
+    <section class="heading-container glue-page  glue-spacer-1-top">
+      <h1 class="glue-headline glue-headline--headline-1">Introducing Gemma 3n: The developer guide</h1>
+    </section>
+
+    <section class="summary-container glue-page glue-spacer-4-top">
+      <div class="date-time">
+        <div class="published-date glue-font-weight-medium">JUNE 26, 2025</div>
+      </div>
+    </section>
+
+    <section class="glue-page glue-grid glue-spacer-1-top">
+
+      <section class="author-container glue-grid__col glue-grid__col--span-4-sm glue-grid__col--span-10-md">
+      
+        
+          <div class="author-obj">
+            <a class="glue-font-weight-medium" href="/en/search/?author=Omar+Sanseviero">Omar Sanseviero</a>
+            
+              <span class="glue-font-weight-medium role">Member of the Technical Staff</span>
+            
+            
+          </div>
+        
+          <div class="author-obj">
+            <a class="glue-font-weight-medium" href="/en/search/?author=Ian+Ballantyne">Ian Ballantyne</a>
+            
+              <span class="glue-font-weight-medium role">Senior Developer Relations Engineer</span>
+            
+            
+          </div>
+        
+
+      
+      </section>
+      <section class="social-container glue-grid__col glue-grid__col--span-4-sm glue-grid__col--span-2-md">
+        <button id="social-button" class="glue-button glue-button--low-emphasis glue-button--icon" aria-haspopup="true" aria-expanded="false">
+          <svg role="presentation" aria-hidden="true" class="glue-icon">
+            <use href="/glue-icon/#share"></use>
+          </svg>
+          <span>Share</span>
+        </button>
+        <ul id="social-menu" class="glue-elevation-level-1" role="menu" aria-labelledby="social-button">
+          <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={url}"
+                title="Share on Facebook" target="_blank" rel="noopener">
+              <svg role="presentation" aria-hidden="true"
+                  class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#post-facebook"></use>
+              </svg>
+              <span>Facebook</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/intent/tweet?text={url}"
+                title="Share on Twitter" target="_blank" rel="noopener">
+              <svg role="presentation" aria-hidden="true"
+                  class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#twitter-x"></use>
+              </svg>
+              <span>Twitter</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/shareArticle?url={url}&amp;mini=true" title="Share on LinkedIn" target="_blank" rel="noopener">
+              <svg role="presentation" aria-hidden="true"
+                  class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#post-linkedin"></use>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:name@example.com?subject=Check%20out%20this%20site&body=Check%20out%20{url}" title="Send via Email">
+              <svg role="presentation" aria-hidden="true"
+                  class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#email"></use>
+              </svg>
+              <span>Mail</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" title="Get shareable link" data-link="" data-copy-text="Copy Link" data-copied-text="Copied!">
+              <svg role="presentation" aria-hidden="true"
+                  class="glue-icon glue-icon--social glue-icon--32px">
+                <use href="/glue-icon/#link"></use>
+              </svg>
+              <span></span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    
+    <section class="blocks-container glue-page glue-spacer-3-top">
+      <div class="block">
+          
+
+<img
+    class="banner-image"
+    src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Gemma3n_Wagtial_RD1-V02.original.jpg"
+    alt="Introducing Gemma 3n: The developer guide"
+/>  <div class="inner-block-content rich-content">
+    <p data-block-key="0lwbc">The <a href="https://blog.google/technology/developers/gemma-open-models/">first Gemma model</a> launched early last year and has since grown into a thriving <a href="https://deepmind.google/models/gemma/gemmaverse/">Gemmaverse</a> of over 160 million collective downloads. This ecosystem includes our family of over a dozen specialized models for everything from safeguarding to medical applications and, most inspiringly, the countless innovations from the community. From innovators like <a href="https://deepmind.google/models/gemma/gemmaverse/roboflow/">Roboflow</a> building enterprise computer vision to the <a href="https://deepmind.google/models/gemma/gemmaverse/gemma-2-llama-swallow/">Institute of Science Tokyo</a> creating highly-capable Japanese Gemma variants, your work has shown us the path forward.</p><p data-block-key="8lqqe">Building on this incredible momentum, we&#x27;re excited to announce the full release of Gemma 3n. While <a href="https://developers.googleblog.com/en/introducing-gemma-3n/">last month&#x27;s preview</a> offered a glimpse, today unlocks the full power of this mobile-first architecture. Gemma 3n is designed for the developer community that helped shape Gemma. It’s supported by your favorite tools including Hugging Face Transformers, llama.cpp, Google AI Edge, Ollama, MLX, and many others, enabling you to fine-tune and deploy for your specific on-device applications with ease. This post is the developer deep dive: we&#x27;ll explore some of the innovations behind Gemma 3n, share new benchmark results, and show you how to start building today.</p><h2 data-block-key="fx4sf" id="what&#x27;s-new-in-gemma-3n"><b><br/></b>What’s new in Gemma 3n?</h2><p data-block-key="10f0e">Gemma 3n represents a major advancement for on-device AI, bringing powerful multimodal capabilities to edge devices with performance previously only seen in last year&#x27;s cloud-based frontier models.</p>
+</div>  <div class="inner-block-content yt-video">
+    <div class="glue-video">
+        <div
+            class="glue-video__container glue-video__container--inline"
+            data-glue-yt-video-vid="eJFJRyXEHZ0"
+            >
+        </div>
+        <div class="glue-video__nojs">
+          <p><a href="https://www.youtube.com/watch?v=eJFJRyXEHZ0">Link to Youtube Video</a>
+          (visible only when JS is disabled)</p>
+        </div>
+    </div>
+    
+</div>  <div class="inner-block-content rich-content">
+    <ul><li data-block-key="b4rlm"><b>Multimodal by design:</b> Gemma 3n natively supports image, audio, video, and text inputs and text outputs.</li></ul><p data-block-key="3n3tb"></p><ul><li data-block-key="belt8"><b>Optimized for on-device:</b> Engineered with a focus on efficiency, Gemma 3n models are available in two sizes based on <a href="/en/introducing-gemma-3n-developer-guide/"><b>effective</b></a> parameters: E2B and E4B. While their raw parameter count is 5B and 8B respectively, architectural innovations allow them to run with a memory footprint comparable to traditional 2B and 4B models, operating with as little as 2GB (E2B) and 3GB (E4B) of memory.</li></ul><p data-block-key="3euck"></p><ul><li data-block-key="19kb"><b>Groundbreaking architecture:</b> At its core, Gemma 3n features novel components like the MatFormer architecture for compute flexibility, Per Layer Embeddings (PLE) for memory efficiency, <a href="https://arxiv.org/abs/2411.07501">LAuReL</a> and <a href="https://arxiv.org/abs/2301.13310">AltUp</a> for architectural efficiency, and new audio and MobileNet-v5 based vision encoders optimized for on-device use cases.</li></ul><p data-block-key="1oroa"></p><ul><li data-block-key="83m4e"><b>Enhanced quality:</b> Gemma 3n delivers quality improvements across multilinguality (supporting 140 languages for text and multimodal understanding of 35 languages), math, coding, and reasoning. The E4B version achieves an LMArena score over 1300, making it the first model under 10 billion parameters to reach this benchmark.</li></ul>
+</div>   
+
+
+    
+    <div class="inner-block-content">
+        <div class="image-wrapper">
+            
+                <img
+                    class="regular-image"
+                    src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Gemma_3n_Chart_1_RD1-V01_1.original.png"
+                    alt="LMArena Text Arena Elo Score rankings for Gemini 1.5 Pro, Gemma 3n E4B llama 4 Maverick 17B 128E GPT 4.1-nano and Phi-4"
+                />
+            
+            
+        </div>
+    </div>
+  <div class="inner-block-content rich-content">
+    <p data-block-key="0lwbc">Achieving this leap in on-device performance required rethinking the model from the ground up. The foundation is Gemma 3n’s unique mobile-first architecture, and it all starts with MatFormer.</p><h2 data-block-key="sj0fa" id="matformer:-one-model-many-sizes"><br/>MatFormer: One model, many sizes</h2><p data-block-key="26ehe">At the core of Gemma 3n is the <a href="https://arxiv.org/abs/2310.07707"><b>MatFormer</b></a><b> (🪆Matryoshka Transformer)</b> <b>architecture</b>, a novel nested transformer built for elastic inference. Think of it like Matryoshka dolls: a larger model contains smaller, fully functional versions of itself. This approach extends the concept of <a href="https://huggingface.co/papers/2205.13147">Matryoshka Representation Learning</a> from just embeddings to all transformer components.</p>
+</div>   
+
+
+    
+    <div class="inner-block-content">
+        <div class="image-wrapper">
+            
+                <img
+                    class="regular-image"
+                    src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/image1_3h2xBRA.original.jpg"
+                    alt="MatFormer in Nano V3"
+                />
+            
+            
+        </div>
+    </div>
+  <div class="inner-block-content rich-content">
+    <p data-block-key="0lwbc">During the MatFormer training of the 4B effective parameter (E4B) model, a 2B effective parameter (E2B) sub-model is simultaneously optimized within it, as shown in the figure above. This provides developers two powerful capabilities and use cases today:</p><p data-block-key="67ma1"></p><p data-block-key="2r57">1:<b> Pre-extracted models:</b> You can directly download and use either the main E4B model for the highest capabilities, or the standalone E2B sub-model which we have already extracted for you, offering up to 2x faster inference.</p><p data-block-key="ddurk"></p><p data-block-key="dsd6a">2:<b> Custom sizes with Mix-n-Match:</b> For more granular control tailored to specific hardware constraints, you can create a spectrum of custom-sized models between E2B and E4B using a method we call Mix-n-Match. This technique allows you to precisely slice the E4B model&#x27;s parameters, primarily by adjusting the feed forward network hidden dimension per layer (from 8192 to 16384) and selectively skipping some layers. We are releasing the <a href="https://goo.gle/gemma3n-matformer-lab">MatFormer Lab</a>, a tool that shows how to retrieve these optimal models, which were identified by evaluating various settings on benchmarks like MMLU.</p>
+</div>   
+
+
+    
+    <div class="inner-block-content">
+        <div class="image-wrapper">
+            
+                <img
+                    class="regular-image"
+                    src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/image4_5lfhlBO.original.png"
+                    alt="Custom Sizes with Mix-n-Match"
+                />
+            
+            
+                
+                    <div class="regular-image-description">
+                        MMLU scores for the pre-trained Gemma 3n checkpoints at different model sizes (using Mix-n-Match)
+                    </div>
+                
+            
+        </div>
+    </div>
+  <div class="inner-block-content rich-content">
+    <p data-block-key="0lwbc">Looking ahead, the MatFormer architecture also paves the way for<b> elastic execution</b>. While not part of today’s launched implementations, this capability allows a single deployed E4B model to dynamically switch between E4B and E2B inference paths on the fly, enabling real-time optimization of performance and memory usage based on the current task and device load.</p><h2 data-block-key="h921a" id="per-layer-embeddings-(ple):-unlocking-more-memory-efficiency"><br/>Per-Layer Embeddings (PLE): Unlocking more memory efficiency</h2><p data-block-key="2ilaf">Gemma 3n models incorporate <b>Per-Layer Embeddings (PLE)</b>. This innovation is tailored for on-device deployment as it dramatically improves model quality without increasing the high-speed memory footprint required on your device&#x27;s accelerator (GPU/TPU).</p><p data-block-key="i1dh">While the Gemma 3n E2B and E4B models have a total parameter count of 5B and 8B respectively, PLE allows a significant portion of these parameters (the embeddings associated with each layer) to be loaded and computed efficiently on the CPU. This means only the core transformer weights (approximately 2B for E2B and 4B for E4B) need to sit in the typically more constrained accelerator memory (VRAM).</p>
+</div>   
+
+
+    
+    <div class="inner-block-content">
+        <div class="image-wrapper">
+            
+                <img
+                    class="regular-image"
+                    src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/image6_BdtLmLG.original.jpg"
+                    alt="Per-Layer Embeddings"
+                />
+            
+            
+                
+                    <div class="regular-image-description">
+                        With Per-Layer Embeddings, you can use Gemma 3n E2B while only having ~2B parameters loaded in your accelerator.
+                    </div>
+                
+            
+        </div>
+    </div>
+  <div class="inner-block-content rich-content">
+    <h2 data-block-key="tf92s" id="kv-cache-sharing:-faster-long-context-processing">KV Cache sharing: Faster long-context processing</h2><p data-block-key="6472b">Processing long inputs, such as the sequences derived from audio and video streams, is essential for many advanced on-device multimodal applications. Gemma 3n introduces KV Cache Sharing, a feature designed to significantly accelerate time-to-first-token for streaming response applications.</p><p data-block-key="1tdep">KV Cache Sharing optimizes how the model handles the initial input processing stage (often called the &quot;prefill&quot; phase). The keys and values of the middle layer from local and global attention are directly shared with all the top layers, delivering a notable 2x improvement on prefill performance compared to Gemma 3 4B. This means the model can ingest and understand lengthy prompt sequences much faster than before.</p><h2 data-block-key="wqckw" id="audio-understanding:-introducing-speech-to-text-and-translation"><br/>Audio understanding: Introducing speech to text and translation</h2><p data-block-key="uijl">Gemma 3n uses an advanced audio encoder based on the <a href="https://arxiv.org/abs/2303.01037">Universal Speech Model (USM)</a>. The encoder generates a token for every 160ms of audio (about 6 tokens per second), which are then integrated as input to the language model, providing a granular representation of the sound context.</p><p data-block-key="dlc74">This integrated audio capability unlocks key features for on-device development, including:</p><p data-block-key="3vh7a"></p><ul><li data-block-key="6mapr"><b>Automatic Speech Recognition (ASR):</b> Enable high-quality speech-to-text transcription directly on the device.</li></ul><p data-block-key="b28dk"></p><ul><li data-block-key="caq44"><b>Automatic Speech Translation (AST):</b> Translate spoken language into text in another language.</li></ul><p data-block-key="gk1q"></p><p data-block-key="doduj">We&#x27;ve observed particularly strong AST results for translation between English and Spanish, French, Italian, and Portuguese, offering great potential for developers targeting applications in these languages. For tasks like speech translation, leveraging Chain-of-Thought prompting can significantly enhance results. Here’s an example:</p>
+</div>  <div class="inner-block-content code-block line-numbers">
+    <pre><code class="language-plaintext">&lt;bos&gt;&lt;start_of_turn&gt;user
+Transcribe the following speech segment in Spanish, then translate it into English: 
+&lt;start_of_audio&gt;&lt;end_of_turn&gt;
+&lt;start_of_turn&gt;model</code></pre>
+    <div class="language-block glue-font-weight-medium">
+        Plain text
+    </div>
+    <div class="copy-code-block">
+        <span class="hidden">Copied</span>
+        <button class="copy-clipboard">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#202124"><path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"/></svg>
+        </button>
+    </div>
+    <div class="dark-mode-block">
+        <button class="dark-mode-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#202124"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg>
+        </button>
+    </div>
+    
+</div>  <div class="inner-block-content rich-content">
+    <p data-block-key="7ree3">At launch time, the Gemma 3n encoder is implemented to process audio clips up to 30 seconds. However, this is not a fundamental limitation. The underlying audio encoder is a streaming encoder, capable of processing arbitrarily long audios with additional long form audio training. Follow-up implementations will unlock low-latency, long streaming applications.</p><h2 data-block-key="7x62c" id="mobilenet-v5:-new-state-of-the-art-vision-encoder"><b><br/></b>MobileNet-V5: New state-of-the-art vision encoder</h2><p data-block-key="3r73m">Alongside its integrated audio capabilities, Gemma 3n features a new, highly efficient vision encoder, <b>MobileNet-V5-300M</b>, delivering state-of-the-art performance for multimodal tasks on edge devices.</p><p data-block-key="1qj1b">Designed for flexibility and power on constrained hardware, MobileNet-V5 gives developers:</p><p data-block-key="fns5r"></p><ul><li data-block-key="c1qs0"><b>Multiple input resolutions</b>: Natively supports resolutions of 256x256, 512x512, and 768x768 pixels, allowing you to balance performance and detail for your specific applications.</li></ul><p data-block-key="5oot9"></p><ul><li data-block-key="648dt"><b>Broad visual understanding</b>: Co-trained on extensive multimodal datasets, it excels at a wide range of image and video comprehension tasks.</li></ul><p data-block-key="dpk64"></p><ul><li data-block-key="k1qf"><b>High throughput</b>: Processes up to 60 frames per second on a Google Pixel, enabling real-time, on-device video analysis and interactive experiences.</li></ul><p data-block-key="ccuj5"></p><p data-block-key="1a8ge">This level of performance is achieved with multiple architectural innovations, including:</p><p data-block-key="nq6g"></p><ul><li data-block-key="48us4">An advanced foundation of MobileNet-V4 blocks (including Universal Inverted Bottlenecks and Mobile MQA).</li></ul><p data-block-key="6gako"></p><ul><li data-block-key="12p8">A significantly scaled up architecture, featuring a hybrid, deep pyramid model that is 10x larger than the biggest MobileNet-V4 variant.</li></ul><p data-block-key="8bn3p"></p><ul><li data-block-key="73gq1">A novel Multi-Scale Fusion VLM adapter that enhances the quality of tokens for better accuracy and efficiency.</li></ul><p data-block-key="49ved"><br/>Benefiting from novel architectural designs and advanced distillation techniques, MobileNet-V5-300M substantially outperforms the baseline SoViT in Gemma 3 (trained with SigLip, no distillation). On a Google Pixel Edge TPU, it <b>delivers a 13x speedup with quantization (6.5x without), requires 46% fewer parameters, and has a 4x smaller memory footprint</b>, all while providing significantly higher accuracy on vision-language tasks</p><p data-block-key="e7u3j">We’re excited to share more about the work behind this model. Look out for our upcoming MobileNet-V5 technical report, which will deep dive into the model architecture, data scaling strategies, and advanced distillation techniques.</p><h2 data-block-key="vsi63" id="building-with-the-community"><br/>Building with the community</h2><p data-block-key="emlv5">Making Gemma 3n accessible from day one has been a priority. We&#x27;re proud to partner with many incredible open source developers to ensure broad support across popular tools and platforms, including contributions from teams behind AMD, Axolotl, <a href="https://hub.docker.com/r/ai/gemma3n">Docker</a>, Hugging Face, llama.cpp, LMStudio, MLX, <a href="https://developer.nvidia.com/blog/run-google-deepminds-gemma-3n-on-nvidia-jetson-and-rtx/">NVIDIA</a>, Ollama, RedHat, SGLang, Unsloth, and vLLM.</p><p data-block-key="354di">But this ecosystem is just the beginning. The true power of this technology is in what you will build with it. That’s why we’re launching the <a href="https://www.kaggle.com/competitions/google-gemma-3n-hackathon">Gemma 3n Impact Challenge.</a> Your mission: use Gemma 3n&#x27;s unique on-device, offline, and multimodal capabilities to build a product for a better world. With $150,000 in prizes, we&#x27;re looking for a compelling video story and a &quot;wow&quot; factor demo that shows real-world impact. <a href="https://www.kaggle.com/competitions/google-gemma-3n-hackathon">Join the challenge</a> and help build a better future.</p><h2 data-block-key="6k6ak" id="get-started-with-gemma-3n-today"><br/>Get started with Gemma 3n today</h2><p data-block-key="9t8b1">Ready to explore the potential of Gemma 3n today? Here&#x27;s how:</p><p data-block-key="4ggnd"></p><ul><li data-block-key="cvr4m"><b>Experiment directly:</b> Use <a href="https://aistudio.google.com/prompts/new_chat?model=gemma-3n-e4b-it">Google AI Studio</a> to try Gemma 3n in just a couple of clicks. Gemma models can also be deployed directly to Cloud Run from AI Studio.</li></ul><p data-block-key="bd44d"></p><ul><li data-block-key="p04i"><b>Download the models</b>: Find the model weights on<a href="https://huggingface.co/collections/google/gemma-3n-685065323f5984ef315c93f4"> Hugging Face</a> and <a href="https://www.kaggle.com/models/google/gemma-3n">Kaggle</a>.</li></ul><p data-block-key="6tp0i"></p><ul><li data-block-key="1va1s"><b>Learn &amp; integrate:</b> Dive into our <a href="https://ai.google.dev/gemma/docs/gemma-3n">comprehensive documentation</a> to quickly integrate Gemma into your projects or start with our inference and fine-tuning guides.</li></ul><p data-block-key="bvdfg"></p><ul><li data-block-key="74h3a"><b>Build with your favorite on-device AI tools</b>: <a href="https://github.com/google-ai-edge/gallery">Google AI Edge Gallery/LiteRT-LLM</a>, <a href="https://ollama.com/library/gemma3n">Ollama</a>, <a href="https://huggingface.co/collections/mlx-community/gemma-3n-685d6c8d02d7486c7e77a7dc">MLX</a>, <a href="https://huggingface.co/collections/ggml-org/gemma-3n-685d6fc0843071be9e77b6f7">llama.cpp</a>, <a href="https://hub.docker.com/r/ai/gemma3n">Docker</a>, <a href="https://huggingface.co/onnx-community/gemma-3n-E2B-it-ONNX">transformers.js</a> and more.</li></ul><p data-block-key="7n3lb"></p><ul><li data-block-key="ebs9n"><b>Use your favorite development tools:</b> Leverage your preferred tools and frameworks, including <a href="https://huggingface.co/blog/gemma3n">Hugging Face Transformers and TRL</a>, <a href="https://github.com/NVIDIA-NeMo">NVIDIA NeMo Framework</a>, <a href="https://unsloth.ai/blog/gemma-3n">Unsloth</a>, and <a href="https://lmstudio.ai/models/google/gemma-3n-e4b">LMStudio</a>.</li></ul><p data-block-key="9nmn8"></p><ul><li data-block-key="a9d96"><b>Deploy your way</b>: Gemma 3n offers multiple deployment options, including <a href="https://ai.google.dev/gemma/docs/core/gemma_on_gemini_api">Google GenAI API</a>, <a href="https://console.cloud.google.com/vertex-ai/publishers/google/model-garden/gemma3n">Vertex AI</a>, SGLang, vLLM, and <a href="https://build.nvidia.com/google/gemma-3n-e4b-it">NVIDIA API Catalog</a>.</li></ul>
+</div> 
+      </div>
+    </section>
+    
+
+    <section class="navigation-container glue-page glue-spacer-6-top">
+      <div class="posted-in-section">
+        <div class="posted-in-section__heading">
+          <span class="glue-caption">
+            posted in:
+          </span>
+        </div>
+        <div class="posted-in-section__tags">
+          <ul>
+              
+                  <li>
+                      <a href="/en/search/?product_categories=Gemma" class="glue-caption">Gemma</a>
+                  </li>
+              
+                  <li>
+                      <a href="/en/search/?technology_categories=AI" class="glue-caption">AI</a>
+                  </li>
+              
+                  <li>
+                      <a href="/en/search/?content_type_categories=Announcements" class="glue-caption">Announcements</a>
+                  </li>
+              
+              
+                  <li>
+                      <a href="/en/search/?tag=Mobile app development" class="glue-caption">Mobile app development</a>
+                  </li>
+              
+                  <li>
+                      <a href="/en/search/?tag=generative AI" class="glue-caption">generative AI</a>
+                  </li>
+              
+                  <li>
+                      <a href="/en/search/?tag=multimodal AI" class="glue-caption">multimodal AI</a>
+                  </li>
+              
+                  <li>
+                      <a href="/en/search/?tag=Learn" class="glue-caption">Learn</a>
+                  </li>
+              
+                  <li>
+                      <a href="/en/search/?tag=Developer Tools" class="glue-caption">Developer Tools</a>
+                  </li>
+              
+                  <li>
+                      <a href="/en/search/?tag=open models" class="glue-caption">open models</a>
+                  </li>
+              
+                  <li>
+                      <a href="/en/search/?tag=Gemma 3n" class="glue-caption">Gemma 3n</a>
+                  </li>
+              
+                  <li>
+                      <a href="/en/search/?tag=Gemma" class="glue-caption">Gemma</a>
+                  </li>
+              
+                  <li>
+                      <a href="/en/search/?tag=on-device AI" class="glue-caption">on-device AI</a>
+                  </li>
+              
+          </ul>
+      </div>
+      </div>
+      <div class="buttons-section">
+        <div class="buttons-section__left">
+          <a href="/en/pythondatacommons/" class="glue-button--icon glue-elevation-level-1 " aria-label="Previous">
+            <svg role="presentation" aria-hidden="true" class="glue-icon">
+              <use href="/glue-icon/#chevron-left"></use>
+            </svg>
+          </a>
+          <span class="caption ">Previous</span>
+        </div>
+        <div class="buttons-section__right">
+          <span class="caption ">Next</span>
+          <a href="/en/new-ai-first-google-colab-now-available-to-everyone/" class="glue-button--icon glue-elevation-level-1 "  aria-label="Next">
+            <svg role="presentation" aria-hidden="true" class="glue-icon">
+              <use href="/glue-icon/#chevron-right"></use>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="related-posts-container glue-page glue-spacer-6-top glue-spacer-3-bottom">
+      <span class="glue-headline glue-headline--headline-3">Related Posts</span>
+      <div class="related-posts-container__carousel glue-page glue-spacer-5-top">
+        <div class="glue-carousel glue-carousel--cards glue-carousel-related-posts" aria-label="Related Posts">
+          <!-- Previous -->
+          <button class="glue-carousel__button glue-carousel__button--prev"
+              aria-label="Go to the previous slide">
+            <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--32px">
+              <use href="/glue-icon/#chevron-left"></use>
+            </svg>
+          </button>
+          <!-- Next -->
+          <button class="glue-carousel__button glue-carousel__button--next"
+              aria-label="Go to the next slide">
+            <svg role="presentation" aria-hidden="true" class="glue-icon glue-icon--32px">
+              <use href="/glue-icon/#chevron-right"></use>
+            </svg>
+          </button>
+          <!-- List -->
+          <div class="glue-carousel__viewport">
+            <div class="glue-carousel__list">
+              
+                <a class="glue-card glue-carousel__item" href="/en/scaling-ai-agent-infrastructure-with-the-mcp-stateless-updates/">
+                  <div aria-label="Scaling AI Agent Infrastructure with the MCP Stateless updates" class="glue-card__inner">
+                    <picture class="glue-card__asset">
+                      <img alt="Scaling AI Agent Infrastructure with the MCP Stateless updates" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/banner-4209x1253.2e16d0ba.fill-800x400.png">
+                    </picture>
+                    <div class="glue-card__content">
+                      <div class="glue-card__tags glue-spacer-2-top">
+                        
+                            
+                            
+                            <span class="glue-label">AI</span>
+                            
+                            <span class="glue-label">Cloud</span>
+                            
+                            
+                            <span class="glue-label">Announcements</span>
+                            
+                            <span class="glue-label">Learn</span>
+                            
+                        
+                      </div>
+                      <p class="glue-headline glue-headline--headline-5">Scaling AI Agent Infrastructure with the MCP Stateless updates</p>
+                      <div class="glue-card__cta-custom glue-spacer-3-top">
+                        <span class="glue-cta">AUG. 5, 2026</span>
+                        <svg aria-hidden="true" class="glue-icon glue-icon--24px" role="presentation">
+                          <use href="/glue-icon/#arrow-forward"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              
+                <a class="glue-card glue-carousel__item" href="/en/agent-plugins-package-your-skills-tools-and-more/">
+                  <div aria-label="Agent Plugins package your skills, tools, and more" class="glue-card__inner">
+                    <picture class="glue-card__asset">
+                      <img alt="Agent Plugins package your skills, tools, and more" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/agent-plugins-banner-4209x1253.2e16d0ba.fill-800x400.jpg">
+                    </picture>
+                    <div class="glue-card__content">
+                      <div class="glue-card__tags glue-spacer-2-top">
+                        
+                            
+                            
+                            <span class="glue-label">AI</span>
+                            
+                            
+                            <span class="glue-label">Announcements</span>
+                            
+                            <span class="glue-label">Learn</span>
+                            
+                        
+                      </div>
+                      <p class="glue-headline glue-headline--headline-5">Agent Plugins package your skills, tools, and more</p>
+                      <div class="glue-card__cta-custom glue-spacer-3-top">
+                        <span class="glue-cta">AUG. 6, 2026</span>
+                        <svg aria-hidden="true" class="glue-icon glue-icon--24px" role="presentation">
+                          <use href="/glue-icon/#arrow-forward"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              
+                <a class="glue-card glue-carousel__item" href="/en/introducing-embeddinggemma/">
+                  <div aria-label="Introducing EmbeddingGemma: The Best-in-Class Open Model for On-Device Embeddings" class="glue-card__inner">
+                    <picture class="glue-card__asset">
+                      <img alt="Introducing EmbeddingGemma: The Best-in-Class Open Model for On-Device Embeddings" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/EmbeddingGemma_Metadatal_RD2-V01.2e16d0ba.fill-800x400.jpg">
+                    </picture>
+                    <div class="glue-card__content">
+                      <div class="glue-card__tags glue-spacer-2-top">
+                        
+                            
+                            <span class="glue-label">Gemma</span>
+                            
+                            
+                            <span class="glue-label">Mobile</span>
+                            
+                            <span class="glue-label">AI</span>
+                            
+                            
+                            <span class="glue-label">Announcements</span>
+                            
+                        
+                      </div>
+                      <p class="glue-headline glue-headline--headline-5">Introducing EmbeddingGemma: The Best-in-Class Open Model for On-Device Embeddings</p>
+                      <div class="glue-card__cta-custom glue-spacer-3-top">
+                        <span class="glue-cta">SEPT. 4, 2025</span>
+                        <svg aria-hidden="true" class="glue-icon glue-icon--24px" role="presentation">
+                          <use href="/glue-icon/#arrow-forward"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              
+                <a class="glue-card glue-carousel__item" href="/en/introducing-gemma-3-270m/">
+                  <div aria-label="Introducing Gemma 3 270M: The compact model for hyper-efficient AI" class="glue-card__inner">
+                    <picture class="glue-card__asset">
+                      <img alt="Introducing Gemma 3 270M: The compact model for hyper-efficient AI" src="https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/Gemma3-270M_Metadata_RD2-V02.2e16d0ba.fill-800x400.jpg">
+                    </picture>
+                    <div class="glue-card__content">
+                      <div class="glue-card__tags glue-spacer-2-top">
+                        
+                            
+                            <span class="glue-label">Gemma</span>
+                            
+                            
+                            <span class="glue-label">AI</span>
+                            
+                            
+                            <span class="glue-label">Announcements</span>
+                            
+                        
+                      </div>
+                      <p class="glue-headline glue-headline--headline-5">Introducing Gemma 3 270M: The compact model for hyper-efficient AI</p>
+                      <div class="glue-card__cta-custom glue-spacer-3-top">
+                        <span class="glue-cta">AUG. 14, 2025</span>
+                        <svg aria-hidden="true" class="glue-icon glue-icon--24px" role="presentation">
+                          <use href="/glue-icon/#arrow-forward"></use>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              
+            </div>
+          </div>
+          <!-- Navigation dots -->
+          <div class="glue-carousel__navigation" aria-label="Choose a page"
+               data-glue-carousel-navigation-label="Selected tab $glue_carousel_page_number$ of $glue_carousel_page_total$">
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </div>
+
+
+				
+				
+
+<div class="footer-linkboxes__wrapper">
+  <nav class="footer-linkboxes" aria-label="Footer links">
+    <ul class="footer-linkboxes__list">
+      <li class="footer-linkbox">
+        <span class="footer-linkbox-heading">
+          Connect
+        </span>
+        <ul class="footer-linkbox-list">
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//googledevelopers.blogspot.com" class="footer-linkbox-list__link">
+                Blog
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/3FReQXN" class="footer-linkbox-list__link">
+                Bluesky
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/googlefordevs" class="footer-linkbox-list__link">
+                Instagram
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/gdevs-li" class="footer-linkbox-list__link">
+                LinkedIn
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/gdevs-tw" class="footer-linkbox-list__link">
+                X (Twitter)
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="https://goo.gle/developers" class="footer-linkbox-list__link">
+                YouTube
+              </a>
+            </li>
+          
+        </ul>
+      </li>
+      <li class="footer-linkbox">
+        <span class="footer-linkbox-heading">
+          Programs
+        </span>
+        <ul class="footer-linkbox-list">
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/program" class="footer-linkbox-list__link">
+                Google Developer Program
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/community/gdg" class="footer-linkbox-list__link">
+                Google Developer Groups
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/community/experts" class="footer-linkbox-list__link">
+                Google Developer Experts
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/community/accelerators" class="footer-linkbox-list__link">
+                Accelerators
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//www.womentechmakers.com" class="footer-linkbox-list__link">
+                Women Techmakers
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//developers.google.com/community/nvidia" class="footer-linkbox-list__link">
+                Google Cloud &amp; NVIDIA
+              </a>
+            </li>
+          
+        </ul>
+      </li>
+      <li class="footer-linkbox">
+        <span class="footer-linkbox-heading">
+          Developer consoles
+        </span>
+        <ul class="footer-linkbox-list">
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.developers.google.com" class="footer-linkbox-list__link">
+                Google API Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.cloud.google.com" class="footer-linkbox-list__link">
+                Google Cloud Platform Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//play.google.com/apps/publish" class="footer-linkbox-list__link">
+                Google Play Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.firebase.google.com" class="footer-linkbox-list__link">
+                Firebase Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.actions.google.com" class="footer-linkbox-list__link">
+                Actions on Google Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//cast.google.com/publish" class="footer-linkbox-list__link">
+                Cast SDK Developer Console
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//chrome.google.com/webstore/developer/dashboard" class="footer-linkbox-list__link">
+                Chrome Web Store Dashboard
+              </a>
+            </li>
+          
+            <li class="footer-linkbox-list__item">
+              <a href="//console.home.google.com/" class="footer-linkbox-list__link">
+                Google Home Developer Console
+              </a>
+            </li>
+          
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div class="footer-utility__wrapper">
+  <div>
+    <nav class="footer-sites" aria-label="Other Google Developers websites">
+      <a href="https://developers.google.com/" class="site-logo-link" data-label="Site logo">
+        <img src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260731-000318/images/g-dev.svg" class="site-logo" alt="Google for Developers">
+      </a>
+      <ul class="footer-sites-list">
+        <li class="footer-sites-item">
+          <a href="//developer.android.com" class="footer-sites-link">
+            Android
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <a href="//developer.chrome.com/home" class="footer-sites-link">
+            Chrome
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <a href="//firebase.google.com" class="footer-sites-link">
+            Firebase
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <a href="//cloud.google.com" class="footer-sites-link">
+            Google Cloud Platform
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <a href="//developers.google.com/products" class="footer-sites-link">
+            All products
+          </a>
+        </li>
+        <li class="footer-sites-item">
+          <button aria-hidden="true" class="glue-cookie-notification-bar-control footer-sites-link">
+            Manage cookies
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <nav class="footer-utility-links">
+      <ul class="footer-utility-list">
+        <li class="footer-utility-item">
+          <a href="//developers.google.com/terms/site-terms" class="footer-utility-link">
+            Terms
+          </a>
+        </li>
+        <li class="footer-utility-item">
+          <a href="//policies.google.com/privacy" class="footer-utility-link">
+            Privacy
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+
+        
+				
+
+        
+        <script nonce="SOKG9OfQK93woV4KSWLMUw==" src="https://www.youtube.com/player_api"></script>
+        <script nonce="SOKG9OfQK93woV4KSWLMUw==" src="//www.gstatic.com/glue/v27_1/glue.min.js"></script>
+        <script nonce="SOKG9OfQK93woV4KSWLMUw==" type="text/javascript" src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260731-000318/js/dgc_blog.js"></script>
+
+        <script nonce="SOKG9OfQK93woV4KSWLMUw==" src="https://www.gstatic.com/glue/cookienotificationbar/cookienotificationbar.min.js"
+            data-glue-cookie-notification-bar-category="2A"
+            data-glue-cookie-notification-bar-site-id="developers.googleblog.com"></script>
+
+        
+  <script src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260731-000318/js/blog_detail.js" nonce="SOKG9OfQK93woV4KSWLMUw=="></script>
+  <script src="https://storage.googleapis.com/gweb-developer-goog-blog-cms-assets/site/20260731-000318/js/prism.js" nonce="SOKG9OfQK93woV4KSWLMUw=="></script>
+
+    </body>
+</html>

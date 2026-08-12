@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Yi-1.5-6B-Chat",
+    "family": "Yi",
+    "released": "2024-05-13",
+    "params_b": 6.0,
+    "active_params_b": 6.0,
+    "arch": "dense",
+    "quant": "Q4_K_M",
+    "model_gb": 3.72,
+    "kv_gb": 0.54,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": null,
+      "GPQA": null,
+      "MATH-500": null,
+      "IFEval": null,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://huggingface.co/01-ai/Yi-1.5-6B-Chat",
+    "notes": "Release date 2024-05-13 verified from official 01-ai/Yi-1.5 GitHub README News section ('The Yi-1.5 series models are open-sourced'). 6B params per model name/card (Apache 2.0). No official scores reported for any of the six target benchmarks (MMLU-Pro, GPQA, MATH-500, IFEval, ARC-AGI, BFCL) — the HF card displays benchmark charts only as images (MMLU/GSM8K/HumanEval etc., not the target suite) and the 01-ai.github.io blog domain is dead (404), so all scores left null rather than guessed."
+  },
+  {
+    "name": "Yi-1.5-9B-Chat",
+    "family": "Yi",
+    "released": "2024-05-13",
+    "params_b": 9.0,
+    "active_params_b": 9.0,
+    "arch": "dense",
+    "quant": "Q4_K_M",
+    "model_gb": 5.58,
+    "kv_gb": 0.81,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": null,
+      "GPQA": null,
+      "MATH-500": null,
+      "IFEval": null,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://huggingface.co/01-ai/Yi-1.5-9B-Chat",
+    "notes": "Release date 2024-05-13 verified from official 01-ai/Yi-1.5 GitHub README News section. 9B params per model card (Apache 2.0). Card claims 'top performer among similarly sized open-source models' but benchmark figures are embedded as images (MMLU/GSM8K/HumanEval, not the target suite); no numeric values extractable, blog domain dead, so all six target scores null."
+  },
+  {
+    "name": "Yi-1.5-34B-Chat",
+    "family": "Yi",
+    "released": "2024-05-13",
+    "params_b": 34.0,
+    "active_params_b": 34.0,
+    "arch": "dense",
+    "quant": "Q4_K_M",
+    "model_gb": 21.08,
+    "kv_gb": 3.06,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": null,
+      "GPQA": null,
+      "MATH-500": null,
+      "IFEval": null,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://huggingface.co/01-ai/Yi-1.5-34B-Chat",
+    "notes": "Release date 2024-05-13 verified from official 01-ai/Yi-1.5 GitHub README News section. 34B params per model card (Apache 2.0). Card claims 'on par with or excels beyond larger models in most benchmarks' but all benchmark figures are image-only; no official numeric scores for the six target benchmarks anywhere (cards, dead 01-ai.github.io blog, Yi tech report 2403.04652 covers original Yi with MMLU/GSM8K/HumanEval only), so scores null."
+  },
+  {
+    "name": "Yi-Coder-9B",
+    "family": "Yi",
+    "released": "2024-09-05",
+    "params_b": 9.0,
+    "active_params_b": 9.0,
+    "arch": "dense",
+    "quant": "Q4_K_M",
+    "model_gb": 5.58,
+    "kv_gb": 0.81,
+    "tool": "unknown",
+    "scores": {
+      "MMLU-Pro": null,
+      "GPQA": null,
+      "MATH-500": null,
+      "IFEval": null,
+      "ARC-AGI": null,
+      "BFCL": null
+    },
+    "source": "https://huggingface.co/01-ai/Yi-Coder-9B",
+    "notes": "Release date 2024-09-05 verified from official 01-ai/Yi-Coder GitHub README News section ('2024-09-05: The Yi-Coder series models are open sourced'). 9B params, 128K context, 52 programming languages (Apache 2.0). Official benchmarks are LiveCodeBench (23% pass@1 for the Chat variant), HumanEval, MBPP, CodeEditorBench — none of the six target benchmarks, so all scores null. NOTE: This is the LAST open-weight release from 01.AI — verified via multiple 2026 sources (presenc.ai Yi lineage: 'Yi-Coder (September 2024) is the latest open-weight coding model'; Yi-Lightning (2024-10-16) is API-only with no open weights; no open-weight release exists after Sept 2024 as of Aug 2026)."
+  }
+]
