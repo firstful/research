@@ -8,6 +8,7 @@ const pages = [
   ['/value-index/landscape', 'landscape'],
   ['/value-index/models', 'models'],
   ['/value-index/methodology', 'methodology'],
+  ['/pricing', 'pricing'],
   ['/notes', 'notes'],
   ['/charts', 'charts'],
 ]
@@ -62,6 +63,22 @@ await page.waitForTimeout(400)
 const rowsFiltered = await page.locator('table tbody tr').count()
 console.log(`models: rows all=${rowsAll} filtered('llama')=${rowsFiltered}`)
 if (rowsAll === 0 || rowsFiltered === 0) { console.log('FAIL: model table empty'); failed++ }
+
+// pricing: charts, segment table, chip toggle
+await page.goto(BASE + '/pricing', { waitUntil: 'networkidle' })
+await page.waitForTimeout(800)
+const pricingSvgs = await page.locator('svg').count()
+const segRows = await page.locator('table tbody tr').count()
+const chipOn = await page.locator('.legend-chip.on').count()
+console.log(`pricing: svgs=${pricingSvgs} segmentRows=${segRows} chipsOn=${chipOn}`)
+if (pricingSvgs < 3) { console.log('FAIL: expected 3 charts (in/out/subs)'); failed++ }
+if (segRows < 20) { console.log('FAIL: segment table too small'); failed++ }
+if (chipOn < 5) { console.log('FAIL: series chips not rendering'); failed++ }
+await page.getByRole('button', { name: 'DeepSeek', exact: false }).first().click()
+await page.waitForTimeout(300)
+const chipsAfter = await page.locator('.legend-chip.on').count()
+console.log(`pricing: chipsOn after hiding DeepSeek = ${chipsAfter}`)
+if (chipsAfter >= chipOn) { console.log('FAIL: chip toggle did not hide a series'); failed++ }
 
 console.log(`\nconsoleErrors: ${consoleErrors.length}`)
 consoleErrors.slice(0, 10).forEach((e) => console.log('  ' + e))

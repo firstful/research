@@ -12,6 +12,9 @@ the SPA navigation fallback).
   - `landscape` — every model, RelIQ vs Serveability, filterable
   - `models` — sortable / searchable table of all models
   - `methodology` — formulas, weights, reference hardware, imputation notes
+- **`/pricing`** — historical model API pricing: documented list prices as thin
+  lines, conditional/uncertain pricing (peak·off-peak, prompt-length tiers,
+  reseller routes) as thick bands, subscriptions on a separate graph
 - **`/notes`** — raw research source material (`public/research/`)
 - **`/charts`** — static PNG views (`public/views/`)
 
@@ -30,6 +33,17 @@ npm run gen:data     # → src/data/{computed,frontier,notes-index,views-index}.
 Serveability, VRAM, t/s, T/J) and **verifies every frontier model's computed values against the
 shipped frontier data** — exits non-zero on any mismatch. Add models by appending to
 `landscape.json` (source) and re-running.
+
+### Pricing data
+
+`src/data/pricing.json` is the curated pricing history (committed — the history IS the data).
+`npm run build` runs `scripts/validate-pricing.mjs` first (prebuild gate): ids unique, dates
+parse, ranges sane, every segment carries a source and confidence. To refresh prices:
+
+```bash
+node scripts/snapshot-pricing.mjs   # pulls current OpenRouter prices for every tracked model
+# review → append/update segments in src/data/pricing.json → bump "updated" → commit
+```
 
 ## Local dev
 

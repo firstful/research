@@ -1,5 +1,11 @@
 import { Link } from 'react-router-dom'
 import computed from '../data/computed.json'
+import pricing from '../data/pricing.json'
+import type { PricingData } from '../lib/pricing'
+
+const pricingData = pricing as unknown as PricingData
+const pricingRows = pricingData.api.reduce((n, s) => n + s.segments.length, 0)
+const pricingSeries = pricingData.api.length
 
 export default function Home() {
   const rows = computed.rows
@@ -38,6 +44,18 @@ export default function Home() {
             speed, T/J and benchmark scores — search, filter, sort.
           </div>
           <div className="meta">sortable · searchable · expandable rows</div>
+        </Link>
+
+        <Link to="/pricing" className="project-card" style={{ color: 'inherit' }}>
+          <h3>Model pricing ↗</h3>
+          <div className="desc">
+            Historical API pricing for the flash/budget class — documented list prices as thin
+            lines, conditional pricing (peak/off-peak, prompt-length tiers, reseller routes) as
+            thick bands, subscriptions on their own graph. Data as of 2026-08-13.
+          </div>
+          <div className="meta">
+            {pricingRows} segments · {pricingSeries} series · {pricingData.updated}
+          </div>
         </Link>
 
         <Link to="/notes" className="project-card" style={{ color: 'inherit' }}>

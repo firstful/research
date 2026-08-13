@@ -1,0 +1,364 @@
+{
+  "updated": "2026-08-13",
+  "horizon": "2026-08-31",
+  "notes": [
+    "Snapshot seeded 2026-08-13 from first-party pricing pages (api.deepseek.com) and the OpenRouter model + endpoints API (created timestamps anchor launch dates).",
+    "Thin segments = exact documented list price. Thick bands = price depends on a condition (peak/off-peak hour, prompt-length tier, reseller route) or is otherwise uncertain — the band spans the range.",
+    "Cache-hit (input_cache_read) prices are tracked in the table but excluded from the charts; they are usually 80-90% below list and dominate effective cost for long-context reuse.",
+    "Subscriptions are charted separately: flat monthly fees are documented but their value per token depends entirely on usage, and plan terms change more often than API list prices."
+  ],
+  "api": [
+    {
+      "id": "deepseek-v4-flash",
+      "label": "DeepSeek V4 Flash",
+      "family": "DeepSeek",
+      "color": "#10b981",
+      "or_id": "deepseek/deepseek-v4-flash",
+      "segments": [
+        {
+          "since": "2026-04-24",
+          "until": "2026-08-16",
+          "in": 0.14,
+          "out": 0.28,
+          "cache_hit": 0.0028,
+          "conf": "documented",
+          "source": "api.deepseek.com/quick_start/pricing (current column); OpenRouter model API (created 2026-04-24)"
+        },
+        {
+          "since": "2026-08-16",
+          "status": "announced",
+          "in_lo": 0.22,
+          "in_hi": 0.44,
+          "out_lo": 0.66,
+          "out_hi": 1.32,
+          "cache_hit": 0.007,
+          "range_kind": "peak / off-peak",
+          "conf": "documented",
+          "source": "api.deepseek.com/quick_start/pricing — peak/off-peak billing effective 2026-08-16 16:00 UTC (peak 01:00-04:00 + 06:00-10:00 UTC); off-peak = half of peak",
+          "note": "2.4x output / 1.6x input at off-peak vs prior list; up to 4.7x output at peak."
+        }
+      ]
+    },
+    {
+      "id": "deepseek-v4-flash-or",
+      "label": "DeepSeek V4 Flash — OR direct route",
+      "family": "DeepSeek",
+      "color": "#6ee7b7",
+      "dashed": true,
+      "or_id": "~deepseek/deepseek-v4-flash-latest",
+      "segments": [
+        {
+          "since": "2026-08-01",
+          "in_lo": 0.072,
+          "in_hi": 0.08,
+          "out_lo": 0.144,
+          "out_hi": 0.18,
+          "cache_hit": 0.016,
+          "range_kind": "reseller route",
+          "conf": "range",
+          "source": "OpenRouter model API — ~deepseek/deepseek-v4-flash-latest (2026-08-01) and deepseek-v4-flash-0731 (2026-07-31)",
+          "note": "Roughly half of first-party list — likely launch promo on the 0731 checkpoint. Whether it survives the 08-16 list change is unconfirmed."
+        }
+      ]
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "label": "DeepSeek V4 Pro",
+      "family": "DeepSeek",
+      "color": "#059669",
+      "or_id": "deepseek/deepseek-v4-pro",
+      "segments": [
+        {
+          "since": "2026-04-24",
+          "until": "2026-08-12",
+          "in": 1.168,
+          "out": 2.336,
+          "conf": "documented",
+          "source": "OpenRouter model API (base id, created 2026-04-24)"
+        },
+        {
+          "since": "2026-08-12",
+          "until": "2026-08-16",
+          "in": 0.435,
+          "out": 0.87,
+          "conf": "documented",
+          "source": "api.deepseek.com/quick_start/pricing (current column); OpenRouter checkpoint deepseek-v4-pro-0813 (created 2026-08-12)",
+          "note": "62% input / 63% output cut with the 0813 checkpoint."
+        },
+        {
+          "since": "2026-08-16",
+          "status": "announced",
+          "in_lo": 0.66,
+          "in_hi": 1.32,
+          "out_lo": 1.98,
+          "out_hi": 3.96,
+          "range_kind": "peak / off-peak",
+          "conf": "documented",
+          "source": "api.deepseek.com/quick_start/pricing — peak/off-peak billing effective 2026-08-16 16:00 UTC",
+          "note": "Off-peak still above the 08-12 cut price; peak is 3x it."
+        }
+      ]
+    },
+    {
+      "id": "qwen3.6-flash",
+      "label": "Qwen3.6 Flash",
+      "family": "Qwen",
+      "color": "#d9f99d",
+      "or_id": "qwen/qwen3.6-flash",
+      "segments": [
+        {
+          "since": "2026-04-27",
+          "in": 0.1875,
+          "out": 1.125,
+          "conf": "documented",
+          "source": "OpenRouter model API (created 2026-04-27); ≥256K prompt tier $0.75/$3.00",
+          "note": "Superseded in price by Qwen3.7 Flash at an 84% input / 88% output cut."
+        }
+      ]
+    },
+    {
+      "id": "qwen3.7-flash",
+      "label": "Qwen3.7 Flash",
+      "family": "Qwen",
+      "color": "#a3e635",
+      "or_id": "qwen/qwen3.7-flash",
+      "segments": [
+        {
+          "since": "2026-07-27",
+          "in_lo": 0.03,
+          "in_hi": 0.2,
+          "out_lo": 0.13,
+          "out_hi": 0.8,
+          "cache_hit": 0.006,
+          "range_kind": "prompt-length tier",
+          "conf": "documented",
+          "source": "OpenRouter endpoints API — Alibaba first-party qwen3.7-flash-20260727: $0.03/$0.13 <32K prompts, $0.10/$0.40 ≥32K, $0.20/$0.80 ≥256K; 1M ctx, multimodal",
+          "note": "Headline price only holds for short prompts; agent/RAG contexts pay the ≥32K tier."
+        }
+      ]
+    },
+    {
+      "id": "gemini-2.5-flash-lite",
+      "label": "Gemini 2.5 Flash-Lite",
+      "family": "Google Gemini",
+      "color": "#38bdf8",
+      "or_id": "google/gemini-2.5-flash-lite",
+      "segments": [
+        {
+          "since": "2025-07-22",
+          "in": 0.1,
+          "out": 0.4,
+          "cache_hit": 0.01,
+          "conf": "documented",
+          "source": "OpenRouter model API (created 2025-07-22); Google pricing page"
+        }
+      ]
+    },
+    {
+      "id": "gemini-3.1-flash-lite",
+      "label": "Gemini 3.1 Flash-Lite",
+      "family": "Google Gemini",
+      "color": "#0ea5e9",
+      "or_id": "google/gemini-3.1-flash-lite",
+      "segments": [
+        {
+          "since": "2026-05-07",
+          "in": 0.25,
+          "out": 1.5,
+          "cache_hit": 0.025,
+          "conf": "documented",
+          "source": "OpenRouter model API (created 2026-05-07; preview since 2026-03-03 at same price)"
+        }
+      ]
+    },
+    {
+      "id": "gemini-3.5-flash-lite",
+      "label": "Gemini 3.5 Flash-Lite",
+      "family": "Google Gemini",
+      "color": "#0284c7",
+      "or_id": "google/gemini-3.5-flash-lite",
+      "segments": [
+        {
+          "since": "2026-07-21",
+          "in": 0.3,
+          "out": 2.5,
+          "cache_hit": 0.03,
+          "conf": "documented",
+          "source": "OpenRouter model API (created 2026-07-21)"
+        }
+      ]
+    },
+    {
+      "id": "gemini-3.7-flash",
+      "label": "Gemini 3.7 Flash",
+      "family": "Google Gemini",
+      "color": "#7dd3fc",
+      "or_id": "google/gemini-3.7-flash",
+      "segments": [
+        {
+          "since": "2026-08-13",
+          "in": 0.375,
+          "out": 1.875,
+          "cache_hit": 0.0375,
+          "conf": "documented",
+          "source": "OpenRouter model API (created 2026-08-13); current 'gemini flash' alias price"
+        }
+      ]
+    },
+    {
+      "id": "gpt-4.1-nano",
+      "label": "GPT-4.1 nano",
+      "family": "OpenAI",
+      "color": "#fb7185",
+      "or_id": "openai/gpt-4.1-nano",
+      "segments": [
+        {
+          "since": "2025-04-14",
+          "until": "2025-08-07",
+          "in": 0.1,
+          "out": 0.4,
+          "cache_hit": 0.025,
+          "conf": "documented",
+          "source": "OpenRouter model API (created 2025-04-14); OpenAI pricing page"
+        }
+      ]
+    },
+    {
+      "id": "gpt-5-nano",
+      "label": "GPT-5 nano",
+      "family": "OpenAI",
+      "color": "#f472b6",
+      "or_id": "openai/gpt-5-nano",
+      "segments": [
+        {
+          "since": "2025-08-07",
+          "in": 0.05,
+          "out": 0.4,
+          "cache_hit": 0.005,
+          "conf": "documented",
+          "source": "OpenRouter model API (created 2025-08-07); OpenAI pricing page",
+          "note": "50% input cut vs the GPT-4.1 nano it replaced."
+        }
+      ]
+    },
+    {
+      "id": "gpt-oss-20b",
+      "label": "GPT-OSS-20B",
+      "family": "OpenAI",
+      "color": "#fda4af",
+      "or_id": "openai/gpt-oss-20b",
+      "segments": [
+        {
+          "since": "2025-08-05",
+          "in": 0.03,
+          "out": 0.13,
+          "cache_hit": 0.03,
+          "conf": "documented",
+          "source": "OpenRouter model API (created 2025-08-05); OpenAI open-weight pricing"
+        }
+      ]
+    },
+    {
+      "id": "glm-4.7-flash",
+      "label": "GLM-4.7 Flash",
+      "family": "Zhipu",
+      "color": "#c084fc",
+      "or_id": "z-ai/glm-4.7-flash",
+      "segments": [
+        {
+          "since": "2026-01-19",
+          "in": 0.06,
+          "out": 0.4,
+          "cache_hit": 0.01,
+          "conf": "documented",
+          "source": "OpenRouter model API (created 2026-01-19)"
+        }
+      ]
+    },
+    {
+      "id": "ling-3.0-flash",
+      "label": "Ling-3.0 Flash",
+      "family": "Inclusion AI",
+      "color": "#fbbf24",
+      "or_id": "inclusionai/ling-3.0-flash",
+      "segments": [
+        {
+          "since": "2026-07-23",
+          "in": 0.021,
+          "out": 0.063,
+          "cache_hit": 0.0042,
+          "conf": "documented",
+          "source": "OpenRouter model API (created 2026-07-23)"
+        }
+      ]
+    }
+  ],
+  "subscriptions": [
+    {
+      "id": "opencode-go",
+      "label": "OpenCode Go",
+      "color": "#34d399",
+      "segments": [
+        {
+          "since": "2025-06-01",
+          "monthly": 10,
+          "conf": "inferred",
+          "source": "opencode.ai Go plan — flat $10/mo open models; start date inferred (subscription in use on the homelab gateway)",
+          "note": "Value is capped: usage meters $12/5hr, $30/wk, $60/mo. Effectively free within the meters."
+        }
+      ]
+    },
+    {
+      "id": "chatgpt-plus",
+      "label": "ChatGPT Plus",
+      "color": "#10a37f",
+      "segments": [
+        {
+          "since": "2023-02-01",
+          "monthly": 20,
+          "conf": "documented",
+          "source": "openai.com/chatgpt/pricing"
+        }
+      ]
+    },
+    {
+      "id": "claude-pro",
+      "label": "Claude Pro",
+      "color": "#d97757",
+      "segments": [
+        {
+          "since": "2023-09-01",
+          "monthly": 20,
+          "conf": "documented",
+          "source": "anthropic.com/pricing"
+        }
+      ]
+    },
+    {
+      "id": "gemini-ai-pro",
+      "label": "Google AI Pro",
+      "color": "#4285f4",
+      "segments": [
+        {
+          "since": "2024-02-08",
+          "monthly": 20,
+          "conf": "documented",
+          "source": "Google One AI Premium pricing"
+        }
+      ]
+    },
+    {
+      "id": "github-copilot",
+      "label": "GitHub Copilot Pro",
+      "color": "#8957e5",
+      "segments": [
+        {
+          "since": "2022-06-21",
+          "monthly": 10,
+          "conf": "documented",
+          "source": "github.com/features/copilot/plans"
+        }
+      ]
+    }
+  ]
+}

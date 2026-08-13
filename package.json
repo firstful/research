@@ -7,6 +7,8 @@
   "scripts": {
     "dev": "vite",
     "gen:data": "node scripts/gen-data.mjs",
+    "validate:pricing": "node scripts/validate-pricing.mjs",
+    "prebuild": "npm run validate:pricing",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview"
   },

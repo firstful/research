@@ -7,6 +7,7 @@ import ModelsTab from './pages/vi/ModelsTab'
 import MethodologyTab from './pages/vi/MethodologyTab'
 import Notes from './pages/Notes'
 import Charts from './pages/Charts'
+import Pricing from './pages/Pricing'
 
 function Header() {
   return (
@@ -21,6 +22,9 @@ function Header() {
           </NavLink>
           <NavLink to="/value-index" className={({ isActive }) => (isActive ? 'active' : '')}>
             value-index
+          </NavLink>
+          <NavLink to="/pricing" className={({ isActive }) => (isActive ? 'active' : '')}>
+            pricing
           </NavLink>
           <NavLink to="/notes" className={({ isActive }) => (isActive ? 'active' : '')}>
             notes
@@ -59,6 +63,7 @@ export default function App() {
             <Route path="models" element={<ModelsTab />} />
             <Route path="methodology" element={<MethodologyTab />} />
           </Route>
+          <Route path="/pricing" element={<Pricing />} />
           <Route path="/notes" element={<Notes />} />
           <Route path="/charts" element={<Charts />} />
           <Route path="*" element={<Home />} />
